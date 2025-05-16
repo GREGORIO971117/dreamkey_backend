@@ -1,10 +1,7 @@
 -- Datos para la tabla Membresias
 USE db_dreamkey;
-
-SELECT afiliados;
 SELECT * FROM suscripcion;
-
--- Datos para la tabla Suscripcion
+-- Datsuscripcionos para la tabla Suscripcion
 INSERT INTO DB_DreamKey.Suscripcion (idSuscripcion, fechaSuscripcion, fechaPagoSuscripcion, activaSuscripcion, Membresias_idMembresias) VALUES
 (1, '2025-05-01', '2025-05-31', 1, 2),
 (2, '2025-05-05', '2025-06-05', 1, 1),
