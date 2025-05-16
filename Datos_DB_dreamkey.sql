@@ -56,4 +56,4 @@ INSERT INTO Comentario (comentarioComentario) VALUES
 ("Todos los servicios a los que ido con mi membresia han sido de excelente calidad"),
 ("Tengo 3 meses usando Dreamkey y no tengo ninguna queja"),
 ("Muy buenos todos los servicios, muy recomendado"),
-("El paquete uno vale muchusimo la pena por el precio"; 
+("El paquete uno vale muchusimo la pena por el precio"); 
