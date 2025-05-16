@@ -49,3 +49,11 @@ INSERT INTO DB_DreamKey.afiliados (
  'Centro de belleza que ofrece una amplia gama de servicios para toda la familia, con un ambiente acogedor y profesional Elegance Studio busca brindar una experiencia para incluir a toda la familia y que puedan disfrutar y consentirse en familia, dando momentos inolvidables.',
  'Corte', 'Masaje', 'Peinados',
  '../../assets/img-servicios/corte.jpg', '../../assets/img-servicios/masaje.jpg', '../../assets/img-servicios/peinados.jpg', null);
+ 
+-- Datos para la tabla Comentario
+INSERT INTO Comentario (comentarioComentario) VALUES 
+(NULL,"Excelente los servicios que ofrecen las empresas afiliadas en DreamKey", NULL),
+(NULL,"Todos los servicios a los que ido con mi membresia han sido de excelente calidad",NULL),
+(NULL,"Tengo 3 meses usando Dreamkey y no tengo ninguna queja", NULL),
+(NULL, "Muy buenos todos los servicios, muy recomendado", NULL),
+(NULL,"El paquete uno vale muchusimo la pena por el precio", NULL); 
