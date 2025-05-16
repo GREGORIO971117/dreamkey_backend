@@ -52,8 +52,8 @@ INSERT INTO DB_DreamKey.afiliados (
  
 -- Datos para la tabla Comentario
 INSERT INTO Comentario (comentarioComentario) VALUES 
-(NULL,"Excelente los servicios que ofrecen las empresas afiliadas en DreamKey", NULL),
-(NULL,"Todos los servicios a los que ido con mi membresia han sido de excelente calidad",NULL),
-(NULL,"Tengo 3 meses usando Dreamkey y no tengo ninguna queja", NULL),
-(NULL, "Muy buenos todos los servicios, muy recomendado", NULL),
-(NULL,"El paquete uno vale muchusimo la pena por el precio", NULL); 
+("Excelente los servicios que ofrecen las empresas afiliadas en DreamKey"),
+("Todos los servicios a los que ido con mi membresia han sido de excelente calidad"),
+("Tengo 3 meses usando Dreamkey y no tengo ninguna queja"),
+("Muy buenos todos los servicios, muy recomendado"),
+("El paquete uno vale muchusimo la pena por el precio"; 
