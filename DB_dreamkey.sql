@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `DB_DreamKey`.`Membresias` (
   `precioMembresia` DOUBLE UNSIGNED NOT NULL,
   `categoriaMembresia` VARCHAR(45) NOT NULL,
   `urlImagenMembresia` VARCHAR(120) NOT NULL,
-  `descripcionMembresia` VARCHAR(45) NOT NULL,
+  `descripcionMembresia` VARCHAR(200) NOT NULL,
   PRIMARY KEY (`idMembresias`),
   UNIQUE INDEX `nombreMembresia_UNIQUE` (`nombreMembresia` ASC) VISIBLE,
   UNIQUE INDEX `urlImagenMembresia_UNIQUE` (`urlImagenMembresia` ASC) VISIBLE)
@@ -34,7 +34,7 @@ ENGINE = InnoDB;
 -- Table `DB_DreamKey`.`Suscripcion`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `DB_DreamKey`.`Suscripcion` (
-  `idSuscripcion` INT NOT NULL,
+  `idSuscripcion` INT NOT NULL AUTO_INCREMENT,
   `fechaSuscripcion` DATE NOT NULL,
   `fechaPagoSuscripcion` DATE NOT NULL,
   `activaSuscripcion` TINYINT NOT NULL,
@@ -44,8 +44,8 @@ CREATE TABLE IF NOT EXISTS `DB_DreamKey`.`Suscripcion` (
   CONSTRAINT `fk_Suscripcion_Membresias1`
     FOREIGN KEY (`Membresias_idMembresias`)
     REFERENCES `DB_DreamKey`.`Membresias` (`idMembresias`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -53,7 +53,7 @@ ENGINE = InnoDB;
 -- Table `DB_DreamKey`.`Usuario`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `DB_DreamKey`.`Usuario` (
-  `idUsuario` INT NOT NULL,
+  `idUsuario` INT NOT NULL AUTO_INCREMENT,
   `nombrePerfilUsuario` VARCHAR(60) NOT NULL,
   `telefonoUsuario` VARCHAR(10) NOT NULL,
   `correoUsuario` VARCHAR(45) NOT NULL,
@@ -68,8 +68,8 @@ CREATE TABLE IF NOT EXISTS `DB_DreamKey`.`Usuario` (
   CONSTRAINT `fk_Usuario_Suscripcion1`
     FOREIGN KEY (`Suscripcion_idSuscripcion`)
     REFERENCES `DB_DreamKey`.`Suscripcion` (`idSuscripcion`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -77,11 +77,11 @@ ENGINE = InnoDB;
 -- Table `DB_DreamKey`.`Afiliados`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `DB_DreamKey`.`Afiliados` (
-  `idAfiliados` INT NOT NULL,
+  `idAfiliados` INT NOT NULL AUTO_INCREMENT,
   `nombreAfiliados` VARCHAR(45) NOT NULL,
   `imgAfiliados` VARCHAR(120) NOT NULL,
   `descripcionAfiliados` VARCHAR(200) NOT NULL,
-  `ratingAfiliados` INT NOT NULL,
+  `ratingAfiliados` DOUBLE NOT NULL,
   `detallesAfiliados` VARCHAR(200) NOT NULL,
   `serviciosAfiliados1` VARCHAR(15) NOT NULL,
   `serviciosAfiliados2` VARCHAR(15) NULL,
@@ -95,8 +95,8 @@ CREATE TABLE IF NOT EXISTS `DB_DreamKey`.`Afiliados` (
   CONSTRAINT `fk_Afiliados_Membresias1`
     FOREIGN KEY (`Membresias_idMembresias`)
     REFERENCES `DB_DreamKey`.`Membresias` (`idMembresias`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -112,8 +112,8 @@ CREATE TABLE IF NOT EXISTS `DB_DreamKey`.`Comentario` (
   CONSTRAINT `fk_Comentario_Usuario1`
     FOREIGN KEY (`Usuario_idUsuario`)
     REFERENCES `DB_DreamKey`.`Usuario` (`idUsuario`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
