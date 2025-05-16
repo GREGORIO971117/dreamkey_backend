@@ -5,19 +5,19 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema DB_DreamKey
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema DB_DreamKey
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
-USE `mydb` ;
+CREATE SCHEMA IF NOT EXISTS `DB_DreamKey` DEFAULT CHARACTER SET utf8 ;
+USE `DB_DreamKey` ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`Membresias`
+-- Table `DB_DreamKey`.`Membresias`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Membresias` (
+CREATE TABLE IF NOT EXISTS `DB_DreamKey`.`Membresias` (
   `idMembresias` INT NOT NULL AUTO_INCREMENT,
   `nombreMembresia` VARCHAR(45) NOT NULL,
   `precioMembresia` DOUBLE UNSIGNED NOT NULL,
@@ -31,9 +31,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Suscripcion`
+-- Table `DB_DreamKey`.`Suscripcion`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Suscripcion` (
+CREATE TABLE IF NOT EXISTS `DB_DreamKey`.`Suscripcion` (
   `idSuscripcion` INT NOT NULL,
   `fechaSuscripcion` DATE NOT NULL,
   `fechaPagoSuscripcion` DATE NOT NULL,
@@ -43,16 +43,16 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Suscripcion` (
   INDEX `fk_Suscripcion_Membresias1_idx` (`Membresias_idMembresias` ASC) VISIBLE,
   CONSTRAINT `fk_Suscripcion_Membresias1`
     FOREIGN KEY (`Membresias_idMembresias`)
-    REFERENCES `mydb`.`Membresias` (`idMembresias`)
+    REFERENCES `DB_DreamKey`.`Membresias` (`idMembresias`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Usuario`
+-- Table `DB_DreamKey`.`Usuario`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Usuario` (
+CREATE TABLE IF NOT EXISTS `DB_DreamKey`.`Usuario` (
   `idUsuario` INT NOT NULL,
   `nombrePerfilUsuario` VARCHAR(60) NOT NULL,
   `telefonoUsuario` VARCHAR(10) NOT NULL,
@@ -67,16 +67,16 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Usuario` (
   INDEX `fk_Usuario_Suscripcion1_idx` (`Suscripcion_idSuscripcion` ASC) VISIBLE,
   CONSTRAINT `fk_Usuario_Suscripcion1`
     FOREIGN KEY (`Suscripcion_idSuscripcion`)
-    REFERENCES `mydb`.`Suscripcion` (`idSuscripcion`)
+    REFERENCES `DB_DreamKey`.`Suscripcion` (`idSuscripcion`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Afiliados`
+-- Table `DB_DreamKey`.`Afiliados`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Afiliados` (
+CREATE TABLE IF NOT EXISTS `DB_DreamKey`.`Afiliados` (
   `idAfiliados` INT NOT NULL,
   `nombreAfiliados` VARCHAR(45) NOT NULL,
   `imgAfiliados` VARCHAR(120) NOT NULL,
@@ -94,16 +94,16 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Afiliados` (
   INDEX `fk_Afiliados_Membresias1_idx` (`Membresias_idMembresias` ASC) VISIBLE,
   CONSTRAINT `fk_Afiliados_Membresias1`
     FOREIGN KEY (`Membresias_idMembresias`)
-    REFERENCES `mydb`.`Membresias` (`idMembresias`)
+    REFERENCES `DB_DreamKey`.`Membresias` (`idMembresias`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Comentario`
+-- Table `DB_DreamKey`.`Comentario`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Comentario` (
+CREATE TABLE IF NOT EXISTS `DB_DreamKey`.`Comentario` (
   `idComentario` INT NOT NULL AUTO_INCREMENT,
   `comentarioComentario` VARCHAR(150) NOT NULL,
   `Usuario_idUsuario` INT NOT NULL,
@@ -111,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Comentario` (
   INDEX `fk_Comentario_Usuario1_idx` (`Usuario_idUsuario` ASC) VISIBLE,
   CONSTRAINT `fk_Comentario_Usuario1`
     FOREIGN KEY (`Usuario_idUsuario`)
-    REFERENCES `mydb`.`Usuario` (`idUsuario`)
+    REFERENCES `DB_DreamKey`.`Usuario` (`idUsuario`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
