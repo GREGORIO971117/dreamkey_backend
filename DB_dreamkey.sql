@@ -29,11 +29,11 @@ ENGINE = InnoDB;
 -- Table `DB_DreamKey`.`Suscripcion`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `DB_DreamKey`.`Suscripcion` (
-  `idSuscripcion` INT NOT NULL AUTO_INCREMENT,
+  `idSuscripcion` INT NOT NULL,
   `fechaSuscripcion` DATE NOT NULL,
   `fechaPagoSuscripcion` DATE NOT NULL,
   `activaSuscripcion` TINYINT NOT NULL,
-  `Membresias_idMembresias` INT NOT NULL,
+  `Membresias_idMembresias` INT NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`idSuscripcion`),
   INDEX `fk_Suscripcion_Membresias1_idx` (`Membresias_idMembresias` ASC) VISIBLE,
   CONSTRAINT `fk_Suscripcion_Membresias1`
@@ -47,13 +47,13 @@ ENGINE = InnoDB;
 -- Table `DB_DreamKey`.`Usuario`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `DB_DreamKey`.`Usuario` (
-  `idUsuario` INT NOT NULL AUTO_INCREMENT,
+  `idUsuario` INT NOT NULL,
   `nombrePerfilUsuario` VARCHAR(60) NOT NULL,
   `telefonoUsuario` VARCHAR(10) NOT NULL,
   `correoUsuario` VARCHAR(45) NOT NULL,
   `contraseñaUsuario` VARCHAR(45) NOT NULL,
   `fechaPagoSuscripcionUsuario` DATE NOT NULL,
-  `Suscripcion_idSuscripcion` INT NOT NULL,
+  `Suscripcion_idSuscripcion` INT NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`idUsuario`),
   UNIQUE INDEX `correoUsuario_UNIQUE` (`correoUsuario` ASC) VISIBLE,
   UNIQUE INDEX `nombrePerfilUsuario_UNIQUE` (`nombrePerfilUsuario` ASC) VISIBLE,
@@ -70,7 +70,7 @@ ENGINE = InnoDB;
 -- Table `DB_DreamKey`.`Afiliados`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `DB_DreamKey`.`Afiliados` (
-  `idAfiliados` INT NOT NULL AUTO_INCREMENT,
+  `idAfiliados` INT NOT NULL,
   `nombreAfiliados` VARCHAR(45) NOT NULL,
   `imgAfiliados` VARCHAR(120) NOT NULL,
   `descripcionAfiliados` VARCHAR(200) NOT NULL,
@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `DB_DreamKey`.`Afiliados` (
   `imgServiciosAfiliados1` VARCHAR(90) NULL,
   `imgServiciosAfiliados2` VARCHAR(90) NULL,
   `imgServiciosAfiliados3` VARCHAR(90) NULL,
-  `Membresias_idMembresias` INT NOT NULL,
+  `Membresias_idMembresias` INT NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`idAfiliados`),
   INDEX `fk_Afiliados_Membresias1_idx` (`Membresias_idMembresias` ASC) VISIBLE,
   CONSTRAINT `fk_Afiliados_Membresias1`
@@ -96,9 +96,9 @@ ENGINE = InnoDB;
 -- Table `DB_DreamKey`.`Comentario`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `DB_DreamKey`.`Comentario` (
-  `idComentario` INT NOT NULL AUTO_INCREMENT,
+  `idComentario` INT NOT NULL,
   `comentarioComentario` VARCHAR(150) NOT NULL,
-  `Usuario_idUsuario` INT NOT NULL,
+  `Usuario_idUsuario` INT NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`idComentario`),
   INDEX `fk_Comentario_Usuario1_idx` (`Usuario_idUsuario` ASC) VISIBLE,
   CONSTRAINT `fk_Comentario_Usuario1`

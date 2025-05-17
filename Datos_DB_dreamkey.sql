@@ -34,6 +34,7 @@ INSERT INTO `Afiliados` ( `nombreAfiliados`, `imgAfiliados`, `descripcionAfiliad
 ( 'Elegance Studio', '../../assets/img-afiliados/Elegance.jpg', 'Centro de Belleza', 3.7, 'Centro de belleza quentos inolvidables.', 'Corte', 'Masaje', 'Peinados', '../../assets/img-servicios/corte.jpg', '../../assets/img-servicios/masaje.jpg', '../../assets/img-servicios/peinados.jpg', 5);
 
 -- Datos para la tabla Comentario
+<<<<<<< HEAD
 INSERT INTO `Comentario` (`comentarioComentario`, `Usuario_idUsuario`) VALUES
 ('Excelente los servicios que ofrecen las empresas afiliadas en DreamKey', 1),
 ('Todos los servicios a los que ido con mi membresia han sido de excelente calidad', 2),
@@ -55,3 +56,11 @@ INSERT INTO usuario (
 ('Carlos Díaz', '5576543210', 'carlos.diaz@example.com', 'C@rlos2025', '2025-05-15', 4),
 ('Sofía Ramírez', '5565432109', 'sofia.ramirez@example.com', 'S0f1a!Pwd', '2025-05-05', 5);
 
+=======
+INSERT INTO Comentario (comentarioComentario) VALUES 
+("Excelente los servicios que ofrecen las empresas afiliadas en DreamKey"),
+("Todos los servicios a los que ido con mi membresia han sido de excelente calidad"),
+("Tengo 3 meses usando Dreamkey y no tengo ninguna queja"),
+("Muy buenos todos los servicios, muy recomendado"),
+("El paquete uno vale muchusimo la pena por el precio"); 
+>>>>>>> 0b792bbcea5de8062f0a26908f1d6b2ca27d3d91
