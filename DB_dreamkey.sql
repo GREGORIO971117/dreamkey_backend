@@ -7,10 +7,6 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema DB_DreamKey
 -- -----------------------------------------------------
-
--- -----------------------------------------------------
--- Schema DB_DreamKey
--- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `DB_DreamKey` DEFAULT CHARACTER SET utf8 ;
 USE `DB_DreamKey` ;
 
@@ -29,7 +25,6 @@ CREATE TABLE IF NOT EXISTS `DB_DreamKey`.`Membresias` (
   UNIQUE INDEX `urlImagenMembresia_UNIQUE` (`urlImagenMembresia` ASC) VISIBLE)
 ENGINE = InnoDB;
 
-
 -- -----------------------------------------------------
 -- Table `DB_DreamKey`.`Suscripcion`
 -- -----------------------------------------------------
@@ -47,7 +42,6 @@ CREATE TABLE IF NOT EXISTS `DB_DreamKey`.`Suscripcion` (
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
-
 
 -- -----------------------------------------------------
 -- Table `DB_DreamKey`.`Usuario`
@@ -72,7 +66,6 @@ CREATE TABLE IF NOT EXISTS `DB_DreamKey`.`Usuario` (
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
-
 -- -----------------------------------------------------
 -- Table `DB_DreamKey`.`Afiliados`
 -- -----------------------------------------------------
@@ -81,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `DB_DreamKey`.`Afiliados` (
   `nombreAfiliados` VARCHAR(45) NOT NULL,
   `imgAfiliados` VARCHAR(120) NOT NULL,
   `descripcionAfiliados` VARCHAR(200) NOT NULL,
-  `ratingAfiliados` DOUBLE NOT NULL,
+  `ratingAfiliados` INT NOT NULL,
   `detallesAfiliados` VARCHAR(200) NOT NULL,
   `serviciosAfiliados1` VARCHAR(15) NOT NULL,
   `serviciosAfiliados2` VARCHAR(15) NULL,
@@ -99,7 +92,6 @@ CREATE TABLE IF NOT EXISTS `DB_DreamKey`.`Afiliados` (
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
-
 -- -----------------------------------------------------
 -- Table `DB_DreamKey`.`Comentario`
 -- -----------------------------------------------------
@@ -115,7 +107,6 @@ CREATE TABLE IF NOT EXISTS `DB_DreamKey`.`Comentario` (
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
-
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
