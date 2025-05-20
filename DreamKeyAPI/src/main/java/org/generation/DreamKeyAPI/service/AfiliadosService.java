@@ -3,7 +3,7 @@ package org.generation.DreamKeyAPI.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.generation.DreamKeyAPI.model.Membresias;
+import org.generation.DreamKeyAPI.model.Afiliados;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,11 +14,12 @@ public class AfiliadosService {
 		
 	@Autowired 
 	public AfiliadosService() {
-		lista.add(new Afiliados('Atelier Ross Melgar', '../../assets/img-afiliados/Atelier.jpg', 'Spa & salón de belleza', 4.5, 'Es un spa y sos de peluquería y estética. Su ambiente acogedor y profesional garantiza una experiencia inolvidable para cada cliente.', 'SPA', 'Corte', 'Masaje', '../../assets/img-servicios/spa.jpg', '../../assets/img-servicios/corte.jpg', '../../assets/img-servicios/masaje.jpg'));
-		lista.add(new Afiliados('Belleza Eterna', '../../assets/img-afiliados/Eterna.jpg', 'Spa', 3.1, 'Es un spa que se especializa en tratam para consentirte.', 'Barbería', 'Corte', 'Facial', '../../assets/img-servicios/barberia.jpg', '../../assets/img-servicios/corte.jpg', '../../assets/img-servicios/faciales.jpg'));
-		lista.add(new Afiliados('Luz y Brillo', '../../assets/img-afiliados/Luz.jpg', 'Barbería', 5, 'Barbería especializada en cortes de cabe, con un estilo fresco y moderno.', 'SPA', 'Corte', 'Masaje', '../../assets/img-servicios/spa.jpg', '../../assets/img-servicios/corte.jpg', '../../assets/img-servicios/masaje.jpg'));
-		lista.add(new Afiliados('Diva Glam', '../../assets/img-afiliados/Diva.jpg', 'Estudio de uñas', 4.8, 'Es un estudio de uñas que diseña da a cada cliente.', 'Manicure', 'Pedicure', 'Gelish', '../../assets/img-servicios/manicure.jpg', '../../assets/img-servicios/pedicure.jpg', '../../assets/img-servicios/gelish.jpg'));
-		lista.add(new Afiliados('Elegance Studio', '../../assets/img-afiliados/Elegance.jpg', 'Centro de Belleza', 3.7, 'Centro de belleza quentos inolvidables.', 'Corte', 'Masaje', 'Peinados', '../../assets/img-servicios/corte.jpg', '../../assets/img-servicios/masaje.jpg', '../../assets/img-servicios/peinados.jpg'));
+		lista.add(new Afiliados("Atelier Ross Melgar", "../../assets/img-afiliados/Atelier.jpg", "Spa & salón de belleza", 4.5, "Es un spa y sos de peluquería y estética. Su ambiente acogedor y profesional garantiza una experiencia inolvidable para cada cliente.", "SPA", "Corte", "Masaje", "../../assets/img-servicios/spa.jpg", "../../assets/img-servicios/corte.jpg", "../../assets/img-servicios/masaje.jpg"));
+		lista.add(new Afiliados("Belleza Eterna", "../../assets/img-afiliados/Eterna.jpg", "Spa", 3.1, "Es un spa que se especializa en tratam para consentirte.", "Barbería", "Corte", "Facial", "../../assets/img-servicios/barberia.jpg", "../../assets/img-servicios/corte.jpg", "../../assets/img-servicios/faciales.jpg"));
+		lista.add(new Afiliados("Luz y Brillo", "../../assets/img-afiliados/Luz.jpg", "Barbería", 5.7, "Barbería especializada en cortes de cabe, con un estilo fresco y moderno.", "SPA", "Corte", "Masaje", "../../assets/img-servicios/spa.jpg", "../../assets/img-servicios/corte.jpg", "../../assets/img-servicios/masaje.jpg"));
+		lista.add(new Afiliados("Diva Glam", "../../assets/img-afiliados/Diva.jpg", "Estudio de uñas", 4.8, "Es un estudio de uñas que diseña da a cada cliente.", "Manicure", "Pedicure", "Gelish", "../../assets/img-servicios/manicure.jpg", "../../assets/img-servicios/pedicure.jpg", "../../assets/img-servicios/gelish.jpg"));
+		lista.add(new Afiliados("Elegance Studio", "../../assets/img-afiliados/Elegance.jpg", "Centro de Belleza", 3.7, "Centro de belleza quentos inolvidables.", "Corte", "Masaje", "Peinados", "../../assets/img-servicios/corte.jpg", "../../assets/img-servicios/masaje.jpg", "../../assets/img-servicios/peinados.jpg"));
+
 	}//contructor 
 	
 	public List<Afiliados> getAfiliados() {
@@ -28,8 +29,8 @@ public class AfiliadosService {
 	public Afiliados getAfiliados(Long id) {
 		Afiliados tmp = null;
 		for (Afiliados afiliados : lista) {
-			if (afiliado.getId()==id) {
-				tmp=afiliado;
+			if (afiliados.getId()==id) {
+				tmp=afiliados;
 				break;
 			}//if
 		}//foreach
@@ -39,9 +40,9 @@ public class AfiliadosService {
 	public Afiliados deleteAfiliados(Long id) {
 		Afiliados tmp = null;
 		for (Afiliados afiliados : lista) {
-			if (afiliado.getId()==id) {
-				tmp=afiliado;
-				lista.remove(afiliado);
+			if (afiliados.getId()==id) {
+				tmp=afiliados;
+				lista.remove(afiliados);
 				break;
 			}//if
 		}//foreach
@@ -69,7 +70,7 @@ public class AfiliadosService {
 
 		Afiliados tmp = null;
 		for (Afiliados afiliados : lista) {
-			if (afiliado.getId()==id) {
+			if (afiliados.getId()==id) {
 				if (nombre!=null) afiliados.setNombre(nombre);
 				if (imagen!=null) afiliados.setImagen(imagen);
 				if (descripcion!=null) afiliados.setDescripcion(descripcion);
