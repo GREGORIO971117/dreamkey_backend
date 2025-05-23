@@ -3,9 +3,7 @@ package org.generation.DreamKeyAPI.controller;
 import java.time.LocalDate;
 import java.util.List;
 
-import org.generation.DreamKeyAPI.model.Membresias;
 import org.generation.DreamKeyAPI.model.Suscripcion;
-import org.generation.DreamKeyAPI.service.MembresiasService;
 import org.generation.DreamKeyAPI.service.SuscripcionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;

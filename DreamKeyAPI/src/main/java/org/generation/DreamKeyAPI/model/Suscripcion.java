@@ -2,13 +2,35 @@ package org.generation.DreamKeyAPI.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+
+@Entity
+@Table(name = "suscripcion")
 public class Suscripcion {
 	
-	private Long id;
-	private LocalDate fechaSuscripcion = LocalDate.now();
-	private LocalDate fechaPagoSuscripcion = LocalDate.now().plusDays(30);
-	private Boolean suscripcionActiva;
-	private static Long total=Long.valueOf(0);
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "idSuscripcion", unique = true, nullable = false)
+	private Long idSuscripcion;
+
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    @Column(nullable = false)
+    private LocalDate fechaSuscripcion = LocalDate.now();
+
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    @Column(nullable = false)
+    private LocalDate fechaPagoSuscripcion = LocalDate.now().plusDays(30);
+    
+    @Column(name = "activaSuscripcion", nullable = false)
+    private Boolean suscripcionActiva;
+
 
 	public Suscripcion(
 			LocalDate fechaSuscripcion, 
@@ -21,8 +43,6 @@ public class Suscripcion {
 	}
 	
 	public Suscripcion() {
-		Suscripcion.total++;
-		this.id=Suscripcion.total;
 	}
 
 	public LocalDate getFechaSuscripcion() {
@@ -53,12 +73,12 @@ public class Suscripcion {
     }
 
 	public Long getId() {
-		return id;
+		return idSuscripcion;
 	}
 
 	@Override
 	public String toString() {
-		return "Suscripcion [id=" + id + ", fechaSuscripcion=" + fechaSuscripcion + ", fechaPagoSuscripcion="
+		return "Suscripcion [id=" + idSuscripcion + ", fechaSuscripcion=" + fechaSuscripcion + ", fechaPagoSuscripcion="
 				+ fechaPagoSuscripcion + ", suscripcionActiva=" + suscripcionActiva + "]";
 	}
 	
