@@ -1,63 +1,57 @@
 package org.generation.DreamKeyAPI.service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.generation.DreamKeyAPI.model.Afiliados;
+import org.generation.DreamKeyAPI.repository.AfiliadosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class AfiliadosService {
 
-	private final List<Afiliados> lista= new ArrayList<Afiliados>();
-		
+	private final AfiliadosRepository afiliadosRepository;
+	
 	@Autowired 
-	public AfiliadosService() {
-		lista.add(new Afiliados("Atelier Ross Melgar", "../../assets/img-afiliados/Atelier.jpg", "Spa & salón de belleza", 4.5, "Es un spa y sos de peluquería y estética. Su ambiente acogedor y profesional garantiza una experiencia inolvidable para cada cliente.", "SPA", "Corte", "Masaje", "../../assets/img-servicios/spa.jpg", "../../assets/img-servicios/corte.jpg", "../../assets/img-servicios/masaje.jpg"));
-		lista.add(new Afiliados("Belleza Eterna", "../../assets/img-afiliados/Eterna.jpg", "Spa", 3.1, "Es un spa que se especializa en tratam para consentirte.", "Barbería", "Corte", "Facial", "../../assets/img-servicios/barberia.jpg", "../../assets/img-servicios/corte.jpg", "../../assets/img-servicios/faciales.jpg"));
-		lista.add(new Afiliados("Luz y Brillo", "../../assets/img-afiliados/Luz.jpg", "Barbería", 5.7, "Barbería especializada en cortes de cabe, con un estilo fresco y moderno.", "SPA", "Corte", "Masaje", "../../assets/img-servicios/spa.jpg", "../../assets/img-servicios/corte.jpg", "../../assets/img-servicios/masaje.jpg"));
-		lista.add(new Afiliados("Diva Glam", "../../assets/img-afiliados/Diva.jpg", "Estudio de uñas", 4.8, "Es un estudio de uñas que diseña da a cada cliente.", "Manicure", "Pedicure", "Gelish", "../../assets/img-servicios/manicure.jpg", "../../assets/img-servicios/pedicure.jpg", "../../assets/img-servicios/gelish.jpg"));
-		lista.add(new Afiliados("Elegance Studio", "../../assets/img-afiliados/Elegance.jpg", "Centro de Belleza", 3.7, "Centro de belleza quentos inolvidables.", "Corte", "Masaje", "Peinados", "../../assets/img-servicios/corte.jpg", "../../assets/img-servicios/masaje.jpg", "../../assets/img-servicios/peinados.jpg"));
-
+	public AfiliadosService(AfiliadosRepository afiliadosRepository) {
+		this.afiliadosRepository = afiliadosRepository;
 	}//contructor 
 	
 	public List<Afiliados> getAfiliados() {
-		return lista;
+		return afiliadosRepository.findAll();
 	}//getAfiliados
 
-	public Afiliados getAfiliados(Long id) {
-		Afiliados tmp = null;
-		for (Afiliados afiliados : lista) {
-			if (afiliados.getId()==id) {
-				tmp=afiliados;
-				break;
-			}//if
-		}//foreach
-		return tmp;
+	public Afiliados getAfiliado(Long id) {
+		return afiliadosRepository.findById(id).orElseThrow(
+	()-> new IllegalArgumentException("El afiliado con el id[ " + id
+			+ " ] no existe.")
+				);
 	}//getAfiliados
 	
-	public Afiliados deleteAfiliados(Long id) {
+	public Afiliados deleteAfiliado(Long id) {
 		Afiliados tmp = null;
-		for (Afiliados afiliados : lista) {
-			if (afiliados.getId()==id) {
-				tmp=afiliados;
-				lista.remove(afiliados);
-				break;
-			}//if
-		}//foreach
+		if(afiliadosRepository.existsById(id)) {
+			tmp = afiliadosRepository.findById(id).get();
+			afiliadosRepository.deleteById(id);
+		}//if exists
 		return tmp;
 	}//deleteAfiliados
 
 	public Afiliados addAfiliados(Afiliados afiliados) {
-		lista.add(afiliados);
+		Optional<Afiliados> afil = afiliadosRepository.findByNombre(afiliados.getNombre());
+		if(afil.isEmpty()) {
+			afiliadosRepository.save(afiliados);
+		}else {
+			afiliados = null; //afil.get();
+		}
 		return afiliados;
 	}//addAfiliados
 
 	public Afiliados updateAfiliados(
 			Long id,
 			String nombre,
-			String imagen,
+			String img,
 			String descripcion,
 			Double raiting, 
 			String detalles,
@@ -69,10 +63,11 @@ public class AfiliadosService {
 			String img3) {
 
 		Afiliados tmp = null;
-		for (Afiliados afiliados : lista) {
-			if (afiliados.getId()==id) {
+		
+			if (afiliadosRepository.existsById(id)) {
+				Afiliados afiliados = afiliadosRepository.findById(id).get();
 				if (nombre!=null) afiliados.setNombre(nombre);
-				if (imagen!=null) afiliados.setImagen(imagen);
+				if (img!=null) afiliados.setImg(img);
 				if (descripcion!=null) afiliados.setDescripcion(descripcion);
 				if (raiting!=null) afiliados.setRaiting(raiting);
 				if (detalles!=null) afiliados.setDetalles(detalles);
@@ -82,10 +77,10 @@ public class AfiliadosService {
 				if (img1!=null) afiliados.setImg1(img1);
 				if (img2!=null) afiliados.setImg2(img2);
 				if (img3!=null) afiliados.setImg3(img3);
+				afiliadosRepository.save(afiliados);
 				tmp=afiliados;
-				break;
 			}//if
-		}//foreach
+		
 		return tmp;
 	}//updateAfiliados
 

@@ -32,13 +32,13 @@ public class AfiliadosController {
 	}//getProductos
 	
 	@GetMapping(path="{afiId}") // http://localhost:8080/api/dreamkey/afiliados/1
-	public Afiliados getAfiliados(@PathVariable("afiId") Long id){
-		return afiliadosService.getAfiliados(id);
+	public Afiliados getAfiliado(@PathVariable("afiId") Long id){
+		return afiliadosService.getAfiliado(id);
 	}//getAfiliados
 	
 	@DeleteMapping(path="{afiId}") // http://localhost:8080/api/dreamkey/afiliados/1
-	public Afiliados deleteAfiliados(@PathVariable ("afiId") Long id) {
-		return afiliadosService.deleteAfiliados(id);
+	public Afiliados deleteAfiliado(@PathVariable ("afiId") Long id) {
+		return afiliadosService.deleteAfiliado(id);
 	}//deleteAfiliados
 	
 	@PostMapping
@@ -47,9 +47,9 @@ public class AfiliadosController {
 	}//addProducto
 	
 	@PutMapping(path="{afiId}") // http://localhost:8080/api/dreamkey/afiliados/1
-	public Afiliados updateProduct(@PathVariable("afiId") Long id, 
+	public Afiliados updateAfiliado(@PathVariable("afiId") Long id, 
 			@RequestParam(required=false) String nombre, 
-			@RequestParam(required=false) String imagen,
+			@RequestParam(required=false) String img,
 			@RequestParam(required=false) String descripcion, 
 			@RequestParam(required=false) Double raiting, 
 			@RequestParam(required=false) String detalles, 
@@ -60,7 +60,7 @@ public class AfiliadosController {
 			@RequestParam(required=false) String img2, 
 			@RequestParam(required=false) String img3){
 		
-		return afiliadosService.updateAfiliados(id,nombre,imagen,descripcion,raiting,detalles,
+		return afiliadosService.updateAfiliados(id,nombre,img,descripcion,raiting,detalles,
 				servicio1,servicio2,servicio3,img1,img2,img3);
 	}//updateProducto
 	

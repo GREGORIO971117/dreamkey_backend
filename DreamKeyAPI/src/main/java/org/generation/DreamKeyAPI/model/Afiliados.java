@@ -1,25 +1,73 @@
 package org.generation.DreamKeyAPI.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+@Entity
+@Table(name="afiliados")
 public class Afiliados {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id_afiliados", unique = true, nullable=false)
 	private Long id;
-	private String nombre;
-	private String imagen;
-	private String descripcion;
-	private Double raiting;
-	private String detalles;
-	private String servicio1;
-	private String servicio2;
-	private String servicio3;
-	private String img1;
-	private String img2;
-	private String img3;
-	private static Long total = Long.valueOf(0);
 	
-	public Afiliados(String nombre, String imagen, String descripcion, Double raiting, String detalles,
+	@Column(name="nombre_afiliados", nullable=false)
+	@JsonProperty("nombre_afiliados")
+	private String nombre;
+	
+	@Column(name="img_afiliados", nullable=false)
+	@JsonProperty("img_afiliados")
+	private String img;
+	
+	@Column(name="descripcion_afiliados", nullable=false)
+	@JsonProperty("descripcion_afiliados")
+	private String descripcion;
+	
+	@Column(name="raiting_afiliados", nullable=false)
+	@JsonProperty("raiting_afiliados")
+	private Double raiting;
+	
+	@Column(name="detalles_afiliados", nullable=false)
+	@JsonProperty("detalles_afiliados")
+	private String detalles;
+	
+	@Column(name="servicios_afiliados1", nullable=false)
+	@JsonProperty("servicios_afiliados1")
+	private String servicio1;
+	
+	@Column(name="servicios_afiliados2", nullable=false)
+	@JsonProperty("servicios_afiliados2")
+	private String servicio2;
+	
+	@Column(name="servicios_afiliados3", nullable=false)
+	@JsonProperty("servicios_afiliados3")
+	private String servicio3;
+	
+	@Column(name="img_afiliados1", nullable=false)
+	@JsonProperty("img_afiliados1")
+	private String img1;
+	
+	@Column(name="img_afiliados2", nullable=false)
+	@JsonProperty("img_afiliados2")
+	private String img2;
+	
+	@Column(name="img_afiliados3", nullable=false)
+	@JsonProperty("img_afiliados3")
+	private String img3;
+	//private static Long total = Long.valueOf(0);
+	
+	public Afiliados(String nombre, String img, String descripcion, Double raiting, String detalles, 
 			String servicio1, String servicio2, String servicio3, String img1, String img2, String img3) {
+		
 		this.nombre = nombre;
-		this.imagen = imagen;
+		this.img = img;
 		this.descripcion = descripcion;
 		this.raiting = raiting;
 		this.detalles = detalles;
@@ -29,13 +77,13 @@ public class Afiliados {
 		this.img1 = img1;
 		this.img2 = img2;
 		this.img3 = img3;
-		Afiliados.total++;
-		this.id = Afiliados.total;
+		//Afiliados.total++;
+		//this.id = Afiliados.total;
 	}//afiliados
 	
 	public Afiliados() {
-		Afiliados.total++;
-		this.id = Afiliados.total;
+		//Afiliados.total++;
+		//this.id = Afiliados.total;
 	}//constructor vacío
 
 	public String getNombre() {
@@ -46,12 +94,12 @@ public class Afiliados {
 		this.nombre = nombre;
 	}//setNombre
 
-	public String getImagen() {
-		return imagen;
+	public String getImg() {
+		return img;
 	}//getImagen
 
-	public void setImagen(String imagen) {
-		this.imagen = imagen;
+	public void setImg(String img) {
+		this.img = img;
 	}//setImagen
 
 	public String getDescripcion() {
@@ -132,9 +180,11 @@ public class Afiliados {
 
 	@Override
 	public String toString() {
-		return "Afiliados [id=" + id + ", nombre=" + nombre + ", imagen=" + imagen + ", descripcion=" + descripcion
-				+ ", raiting=" + raiting + ", detalles=" + detalles + ", servicio1=" + servicio1 + ", servicio2="
-				+ servicio2 + ", servicio3=" + servicio3 + ", img1=" + img1 + ", img2=" + img2 + ", img3=" + img3 + "]";
+		return "Afiliados [id=" + id + ", nombre=" + nombre + ", img=" + img + 
+				", descripcion=" + descripcion + ", raiting=" + raiting + 
+				", detalles=" + detalles + ", servicio1=" + servicio1 + 
+				", servicio2=" + servicio2 + ", servicio3=" + servicio3 + 
+				", img1=" + img1 + ", img2=" + img2 + ", img3=" + img3 + "]";
 	}//toString
 	
 	
