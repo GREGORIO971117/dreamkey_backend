@@ -1,94 +1,104 @@
 package org.generation.DreamKeyAPI.service;
 
-import java.util.ArrayList; 
 import java.util.List;
+import java.util.Optional;
+
+import javax.transaction.Transactional;
 
 import org.generation.DreamKeyAPI.model.Membresias;
+import org.generation.DreamKeyAPI.repository.MembresiasRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 @Service
 public class MembresiasService {
 
-	private final List<Membresias> lista= new ArrayList<Membresias>();
-	
-	
-	@Autowired 
-	public MembresiasService() {
-		lista.add(new Membresias("el mejor", 9999.0, "Primera", "imagen.jpg", "la mejor"));
-		lista.add(new Membresias("el mejor", 8888.0, "Segunda", "imagen.jpg", "la mejor"));
-		lista.add(new Membresias("el mejor", 7777.0, "Tercera", "imagen.jpg", "la mejor"));
-		lista.add(new Membresias("el mejor", 6666.0, "Cuarta", "imagen.jpg", "la mejor"));
-	}
-	
+    private final MembresiasRepository membresiasRepository;
 
-	public List<Membresias> getMembresias() {
-		// TODO Auto-generated method stub
-		return lista;
-	}
+    @Autowired
+    public MembresiasService(MembresiasRepository membresiasRepository) {
+        this.membresiasRepository = membresiasRepository;
+    }
 
-	public Membresias getMembresia(Long id) {
-		
-		Membresias tmp = null;
-		
-		for (Membresias membresia : lista) {
-			if (membresia.getId()==id) {
-				tmp=membresia;
-				break;
-			}
-		}
-		
-		return tmp;
-	}
-	
-	
-	public Membresias deleteMembresias(Long id) {
-		// TODO Auto-generated method stub
-		Membresias tmp = null;
-		for (Membresias membresia : lista) {
-			if (membresia.getId()==id) {
-				tmp=membresia;
-				lista.remove(membresia);
-				break;
-			}
-		}
-		
-		return tmp;
-	}
+    public List<Membresias> getMembresias() {
+        return membresiasRepository.findAll();
+    }
 
-	public Membresias addMembresias(Membresias membresia) {
-		// TODO Auto-generated method stub
-		lista.add(membresia);
-		return membresia;
-	}
+    public Membresias getMembresia(Long id) {
+        return membresiasRepository.findById(id).orElseThrow(
+            () -> new IllegalArgumentException(
+            		"La membresía con el id ["
+            		+ id
+            		+ "] no existe")
+        );
+    }
 
-	public Membresias updateMembresias(
-			
-			Long id,
-			String nombre,
-			Double precio, 
-			String categoria,
-			String imagen,
-			String descripcion) {
-		// TODO Auto-generated method stub
-		
+    public Membresias deleteMembresias(Long id) {
+        Membresias tmp = null;
+        if (membresiasRepository.existsById(id)) {
+            tmp = membresiasRepository.findById(id).get(); 
+            membresiasRepository.deleteById(id);
+        }
+        return tmp; // Retorna la membresía borrada o null si no se encontró
+    }
 
-		Membresias tmp = null;
-		
-		for (Membresias membresia : lista) {
-			
-			if (membresia.getId()==id) {
-				if (nombre!=null) {membresia.setNombre(nombre);}
-				if (precio!=null) {membresia.setPrecio(precio);}
-				if (categoria!=null) {membresia.setCategoria(categoria);}
-				if (imagen!=null) {membresia.setImagen(imagen);}
-				if (descripcion!=null) {membresia.setDescripcion(descripcion);}
-				tmp=membresia;
-				break;
-				
-			}
-		}return tmp;
-		
-	}
+    public Membresias addMembresias(Membresias membresia) {
+        Optional<Membresias> user = membresiasRepository.findByNombre(membresia.getNombre());
+        if (user.isEmpty()) {
+            return membresiasRepository.save(membresia);
+        } else {
+            return null; // Indica que ya existe una membresía con ese nombre
+        }
+    }
+@Transactional 
+    public Membresias updateMembresias(
+            Long id,
+            String nombre,
+            Double precio,
+            String categoria,
+            String imagen,
+            String descripcion) {
 
-}
+        // Primero, verifica si la membresía existe
+        Membresias mem = membresiasRepository.findById(id)
+                          .orElseThrow(() -> 
+                          new IllegalArgumentException("La membresía con el id ["
+                          + id
+                          + "] no existe para actualizar."));
+
+        // Aplica las actualizaciones solo si los parámetros no son nulos y son diferentes
+        if (nombre != null && !nombre.isEmpty() && !nombre.equals(mem.getNombre())) {
+        	
+            Optional<Membresias> existingMembresia = membresiasRepository.findByNombre(nombre);
+            
+            if (existingMembresia.isPresent() && !existingMembresia.get().getId().equals(id)) {
+            	
+                throw new IllegalStateException("Ya existe una membresía con el nombre: " + nombre);
+            
+            }
+            
+            mem.setNombre(nombre);
+            
+        }
+
+        if (precio != null && precio >= 0 && !precio.equals(mem.getPrecio())) { // Agregado precio >= 0
+            mem.setPrecio(precio);
+        }
+
+        if (categoria != null && !categoria.isEmpty() && !categoria.equals(mem.getCategoria())) {
+            mem.setCategoria(categoria);
+        }
+
+        if (imagen != null && !imagen.isEmpty() && !imagen.equals(mem.getImagen())) {
+            mem.setImagen(imagen);
+        }
+
+        if (descripcion != null && !descripcion.isEmpty() && !descripcion.equals(mem.getDescripcion())) {
+            mem.setDescripcion(descripcion);
+        }
+
+        return mem;
+    }
+}	
