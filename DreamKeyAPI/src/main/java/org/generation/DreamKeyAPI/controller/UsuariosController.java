@@ -2,6 +2,7 @@ package org.generation.DreamKeyAPI.controller;
 
 import java.util.List;
 
+import org.generation.DreamKeyAPI.dto.CambiarContraseña;
 import org.generation.DreamKeyAPI.model.Usuarios;
 import org.generation.DreamKeyAPI.service.UsuariosService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +13,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping(path="/api/dreamkey/Usuarios")
+@RequestMapping(path="/api/dreamkey/usuarios")
 public class UsuariosController {
 	
 		
@@ -28,9 +28,7 @@ public class UsuariosController {
 			super();
 			this.usuariosServices = usuariosServices;
 		}
-		
-		
-		
+			
 		@GetMapping
 		public List<Usuarios> getUsuarios(){
 			return usuariosServices.getUsuarios();
@@ -51,17 +49,11 @@ public class UsuariosController {
 			return usuariosServices.addUsuarios(usuario);
 		}
 		
+				
 		@PutMapping(path="{usuarioId}")
-		public Usuarios updateUsuarios(@PathVariable ("usuarioId") Long id,
-				@RequestParam(required=false) String nombreUsuario,
-				@RequestParam(required=false) String telefonoUsuario,
-				@RequestParam(required=false) String correoUsuario,
-				@RequestParam(required=false) String contraseñaUsuario
-				) {
-			
-			return usuariosServices.updateUsuarios(id,nombreUsuario,telefonoUsuario,correoUsuario,contraseñaUsuario);
-			
-		}
+		public Usuarios updateUsuario(@PathVariable("usuarioId") Long id,
+				@RequestBody CambiarContraseña cambiarContraseña) {
+			return usuariosServices.updateUsuario(id, cambiarContraseña);
+		}//updateUsuario
 
-	
 }

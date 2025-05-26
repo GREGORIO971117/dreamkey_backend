@@ -1,95 +1,89 @@
 package org.generation.DreamKeyAPI.service;
 
-import java.util.ArrayList; 
 import java.util.List;
+import java.util.Optional;
 
+import org.generation.DreamKeyAPI.dto.CambiarContraseña;
 import org.generation.DreamKeyAPI.model.Usuarios;
-import org.generation.DreamKeyAPI.model.Usuarios;
+import org.generation.DreamKeyAPI.repository.UsuariosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
 @Service
 public class UsuariosService {
+	@Autowired
+	private PasswordEncoder encoder;
 	
+	private final UsuariosRepository usuariosRepository;
+	
+	@Autowired
+	public UsuariosService(UsuariosRepository usuariosRepository) {
+		this.usuariosRepository = usuariosRepository;
+	}
+	
+	public List<Usuarios> getUsuarios() {
+		return usuariosRepository.findAll();
+	}//getUsuarios
 
-		private final List<Usuarios> lista= new ArrayList<Usuarios>();
-		
-		
-		@Autowired 
-		public UsuariosService() {
-			lista.add(new Usuarios("luu", "5562174247", "luu@gmail.com", "Sallyske2"));
-			lista.add(new Usuarios("Ary", "5569874523", "ary@gmail.com", "Sallyske3"));
-			lista.add(new Usuarios("Danney", "5595687422", "dann@gmail.com", "Sallyske4"));
-			lista.add(new Usuarios("Lesly", "5596874512", "les@gmail.com", "Sallyske5"));
-		}
-		
-		
-		public List<Usuarios> getUsuarios() {
-			// TODO Auto-generated method stub
-			return lista;
-		}
+	public Usuarios getUsuario(Long idUsuario) {
+		// TODO Auto-generated method stub
+		return usuariosRepository.findById(idUsuario).orElseThrow(
+				() -> new IllegalArgumentException("El usuario con el id["+ idUsuario + "] no existe.")
+				);
+	}//getUsuario
 
-		public Usuarios getUsuario(Long id) {
-			
-			Usuarios tmp = null;
-			
-			for (Usuarios usuario : lista) {
-				if (usuario.getIdUsuario()==id) {
-					tmp=usuario;
-					break;
-				}
+	public Usuarios deleteUsuarios(Long idUsuario) {
+		Usuarios user = null;
+		if(usuariosRepository.existsById(idUsuario)) {
+			user = usuariosRepository.findById(idUsuario).get();
+			usuariosRepository.deleteById(idUsuario);
+		}//if exists
+			return user;
+	}
+
+	public Usuarios addUsuarios(Usuarios usuarios) {
+		Optional<Usuarios> user = usuariosRepository.findByCorreoUsuario(usuarios.getCorreoUsuario());
+		if(user.isEmpty()) {
+			//encoder para guardar la contraseña cifrada
+			usuarios.setContraseñaUsuario(encoder.encode(usuarios.getContraseñaUsuario()));
+			usuariosRepository.save(usuarios);
+		}else {
+			usuarios=null;
+		}
+		return usuarios;
+	}
+	
+	public Usuarios updateUsuario(Long id, CambiarContraseña cambiarContraseña) {
+		Usuarios user = null;
+		if(usuariosRepository.existsById(id)) {
+			user = usuariosRepository.findById(id).get();
+			//antes del encoder
+			//if(user.getPassword().equals(changePassword.getPassword())) {
+			//user.setPassword(changePassword.getNpassword());
+			if(encoder.matches(cambiarContraseña.getPassword(), user.getContraseñaUsuario())) {
+				//encoder 
+				user.setContraseñaUsuario(encoder.encode(cambiarContraseña.getNpassword()));
+				usuariosRepository.save(user);
+			}else {
+				user = null;
 			}
-			
-			return tmp;
-		}
-		
-		
-		public Usuarios deleteUsuarios(Long id) {
-			
-			Usuarios tmp = null;
-			for (Usuarios usuario : lista) {
-				if (usuario.getIdUsuario()==id) {
-					tmp=usuario;
-					lista.remove(usuario);
-					break;
-				}
-			}
-			
-			return tmp;
-		}
+		}//if exists
+			return user;
+	}//updateUsuario
 
-		public Usuarios addUsuarios(Usuarios usuario) {
-		
-			lista.add(usuario);
-			return usuario;
-		}
 
-		public Usuarios updateUsuarios(
-				
-				Long id,
-				String nombreUsuario,
-				String telefonoUsuario, 
-				String correoUsuario,
-				String contraseñaUsuario) {
-					
-			Usuarios tmp = null;
-			
-			for (Usuarios usuario : lista) {
-				
-				if (usuario.getIdUsuario()==id) {
-					if (nombreUsuario!=null) {usuario.setNombreUsuario(nombreUsuario);}
-					if (telefonoUsuario!=null) {usuario.setTelefonoUsuario(telefonoUsuario);}
-					if (correoUsuario!=null) {usuario.setCorreoUsuario(correoUsuario);}
-					if (contraseñaUsuario!=null) {usuario.setContraseñaUsuario(contraseñaUsuario);}
-				
-					tmp=usuario;
-					break;
-					}
-				
-			}return tmp;
-			
+	public boolean validateUser(Usuarios usuarios) {
+		Optional<Usuarios> user = usuariosRepository.findByCorreoUsuario(usuarios.getCorreoUsuario());
+		if(user.isPresent()) {
+			Usuarios tmp = user.get();
+			if(encoder.matches(usuarios.getContraseñaUsuario(), tmp.getContraseñaUsuario())) {
+				return true;
+			}//matches
+		}//if isPresent
+		return false;
+	}//ValidateUser
+
+
 }
-	
-	
-}// class UsuariosService

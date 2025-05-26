@@ -1,41 +1,40 @@
 package org.generation.DreamKeyAPI.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="usuario")
 public class Usuarios {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "idUsuario", unique = true, nullable = false)
 	private Long idUsuario;
+	@Column(name = "nombreUsuario", nullable = false)
 	private String nombreUsuario;
+	@Column(name = "telefonoUsuario", nullable = false)
 	private String telefonoUsuario;
+	@Column(name = "correoUsuario", nullable = false)
 	private String correoUsuario;
+	@Column(name = "contraseñaUsuario", nullable = false, length = 255)
 	private String contraseñaUsuario;
 	
-	private static Long total=Long.valueOf(0);
-
-	//constructor de usuarios
-	public Usuarios(String nombreUsuario, String telefonoUsuario, String correoUsuario, String contraseñaUsuario) {
-		
-		this.nombreUsuario = nombreUsuario;
-		this.telefonoUsuario = telefonoUsuario;
+	public Usuarios(String correoUsuario, String contraseñaUsuario) {
+		super();
 		this.correoUsuario = correoUsuario;
 		this.contraseñaUsuario = contraseñaUsuario;
-		Usuarios.total++;
-		this.idUsuario=Usuarios.total;
 	}
-
 	
 	public Usuarios() {
-		Usuarios.total++;
-		this.idUsuario=Usuarios.total;
 	}
 	
 	
 	//getters y setters
-	public Long getIdUsuario() {
-		return idUsuario;
-	}
-
-	public void setIdUsuario(Long idUsuario) {
-		this.idUsuario = idUsuario;
-	}
 
 	public String getNombreUsuario() {
 		return nombreUsuario;
@@ -69,11 +68,9 @@ public class Usuarios {
 		this.contraseñaUsuario = contraseñaUsuario;
 	}
 
-
-	public static Long getTotal() {
-		return total;
+	public Long getIdUsuario() {
+		return idUsuario;
 	}
-
 
 	@Override
 	public String toString() {
@@ -83,15 +80,4 @@ public class Usuarios {
 	}
 	
 	//toString()
-	
-	
-	
-
-
-	
-	
-	
-	
-	
-
 }

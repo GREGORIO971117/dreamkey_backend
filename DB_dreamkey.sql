@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `db_dreamkey`.`Usuario` (
   `nombreUsuario` VARCHAR(60) NOT NULL,
   `telefonoUsuario` VARCHAR(30) NOT NULL,
   `correoUsuario` VARCHAR(45) NOT NULL,
-  `contraseñaUsuario` VARCHAR(45) NOT NULL,
+  `contraseñaUsuario` VARCHAR(1000) NOT NULL,
   PRIMARY KEY (`idUsuario`))
 ENGINE = InnoDB;
 
