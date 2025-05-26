@@ -40,12 +40,12 @@ public class MembresiasController {
 	}
 	
 	@DeleteMapping(path="{memId}")
-	public Membresias deleMembresias(@PathVariable ("memId") Long id) {
+	public Membresias deleteMembresias(@PathVariable ("memId") Long id) {
 		return membresiasServices.deleteMembresias(id);
 	}
 	
 	@PostMapping
-	public Membresias adMembresias(@RequestBody Membresias membresia) {
+	public Membresias addMembresias(@RequestBody Membresias membresia) {
 		return membresiasServices.addMembresias(membresia);
 	}
 	
@@ -59,6 +59,5 @@ public class MembresiasController {
 			) {
 		
 		return membresiasServices.updateMembresias(id,nombre,precio,categoria,imagen,descripcion);
-		
 	}
 }
