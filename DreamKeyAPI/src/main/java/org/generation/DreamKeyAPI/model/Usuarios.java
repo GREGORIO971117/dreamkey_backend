@@ -1,84 +1,95 @@
 package org.generation.DreamKeyAPI.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="usuario")
 public class Usuarios {
 	
-	private Long idUsuario;
-	private String nombreUsuario;
-	private String telefonoUsuario;
-	private String correoUsuario;
-	private String contraseñaUsuario;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="idUsuario", unique=true, nullable=false)
+	private Long id;
 	
-	private static Long total=Long.valueOf(0);
+	@Column(name="nombreUsuario", nullable=false)
+	private String nombre;
+	
+	@Column(name="telefonoUsuario", nullable=false)
+	private String telefono;
+	
+	@Column(name="correoUsuario", nullable=false)
+	private String correo;
+	
+	@Column(name="contraseñaUsuario", nullable=false)
+	private String contraseña;
+	
+	//private static Long total=Long.valueOf(0);
 
 	//constructor de usuarios
-	public Usuarios(String nombreUsuario, String telefonoUsuario, String correoUsuario, String contraseñaUsuario) {
+	public Usuarios(String nombre, String telefono, String correo, String contraseña) {
 		
-		this.nombreUsuario = nombreUsuario;
-		this.telefonoUsuario = telefonoUsuario;
-		this.correoUsuario = correoUsuario;
-		this.contraseñaUsuario = contraseñaUsuario;
-		Usuarios.total++;
-		this.idUsuario=Usuarios.total;
-	}
+		this.nombre = nombre;
+		this.telefono = telefono;
+		this.correo = correo;
+		this.contraseña = contraseña;
+		//Usuarios.total++;
+		//this.id=Usuarios.total;
+	}//constructor
 
 	
 	public Usuarios() {
-		Usuarios.total++;
-		this.idUsuario=Usuarios.total;
-	}
+		//Usuarios.total++;
+		//this.id=Usuarios.total;
+	}//constructor vacios
 	
 	
 	//getters y setters
-	public Long getIdUsuario() {
-		return idUsuario;
-	}
+	public Long getId() {
+		return id;
+	}//getId
 
-	public void setIdUsuario(Long idUsuario) {
-		this.idUsuario = idUsuario;
-	}
+	public String getNombre() {
+		return nombre;
+	}//getNombre
 
-	public String getNombreUsuario() {
-		return nombreUsuario;
-	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}//setNombre
 
-	public void setNombreUsuario(String nombreUsuario) {
-		this.nombreUsuario = nombreUsuario;
-	}
+	public String getTelefono() {
+		return telefono;
+	}//getTelefono
 
-	public String getTelefonoUsuario() {
-		return telefonoUsuario;
-	}
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}//setTelefono
 
-	public void setTelefonoUsuario(String telefonoUsuario) {
-		this.telefonoUsuario = telefonoUsuario;
-	}
+	public String getCorreo() {
+		return correo;
+	}//getCorreo
 
-	public String getCorreoUsuario() {
-		return correoUsuario;
-	}
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}//setCorreo
 
-	public void setCorreoUsuario(String correoUsuario) {
-		this.correoUsuario = correoUsuario;
-	}
+	public String getContraseña() {
+		return contraseña;
+	}//getContraseña
 
-	public String getContraseñaUsuario() {
-		return contraseñaUsuario;
-	}
-
-	public void setContraseñaUsuario(String contraseñaUsuario) {
-		this.contraseñaUsuario = contraseñaUsuario;
-	}
-
-
-	public static Long getTotal() {
-		return total;
-	}
+	public void setContraseña(String contraseña) {
+		this.contraseña = contraseña;
+	}//setContraseña
 
 
 	@Override
 	public String toString() {
-		return "Usuarios [idUsuario=" + idUsuario + ", nombreUsuario=" + nombreUsuario + ", telefonoUsuario="
-				+ telefonoUsuario + ", correoUsuario=" + correoUsuario + ", contraseñaUsuario=" + contraseñaUsuario
+		return "Usuarios [idUsuario=" + id + ", nombreUsuario=" + nombre + ", telefonoUsuario="
+				+ telefono + ", correoUsuario=" + correo + ", contraseñaUsuario=" + contraseña
 				+ "]";
 	}
 	
