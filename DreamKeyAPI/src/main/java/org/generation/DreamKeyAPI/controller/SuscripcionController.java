@@ -36,12 +36,12 @@ public class SuscripcionController {
 
 	
     @GetMapping(path="{susId}")
-    public Suscripcion getSuscripcion(@PathVariable("susId") Long id) {
+    public Suscripcion getSuscripcion(@PathVariable("susId") Integer id) {
         return suscripcionService.getSuscripcion(id);
     }
 
     @DeleteMapping(path="{susId}")
-    public Suscripcion deleteSuscripcion(@PathVariable("susId") Long id) {
+    public Suscripcion deleteSuscripcion(@PathVariable("susId") Integer id) {
         return suscripcionService.deleteSuscripcion(id);
     }
 	
@@ -52,7 +52,7 @@ public class SuscripcionController {
 	
     @PutMapping(path="{susId}")
     public Suscripcion updateSuscripcion(
-            @PathVariable("susId") Long id,
+            @PathVariable("susId") Integer id,
             @RequestParam(required=false) LocalDate fechaSuscripcion,
             @RequestParam(required=false) LocalDate fechaPagoSuscripcion,
             @RequestParam(required=false) Boolean suscripcionActiva
@@ -61,7 +61,7 @@ public class SuscripcionController {
     }
     
     @PutMapping(path="{susId}/renovar")
-    public Suscripcion renovarSuscripcion(@PathVariable("susId") Long id) {
+    public Suscripcion renovarSuscripcion(@PathVariable("susId") Integer id) {
         return suscripcionService.renovarSuscripcion(id);
     }
 

@@ -35,12 +35,12 @@ public class MembresiasController {
 	}
 	
 	@GetMapping(path="{memId}")
-	public Membresias getMembresias(@PathVariable ("memId") Long id) {
+	public Membresias getMembresias(@PathVariable ("memId") Integer id) {
 		return membresiasServices.getMembresia(id);
 	}
 	
 	@DeleteMapping(path="{memId}")
-	public Membresias deleteMembresias(@PathVariable ("memId") Long id) {
+	public Membresias deleteMembresias(@PathVariable ("memId") Integer id) {
 		return membresiasServices.deleteMembresias(id);
 	}
 	
@@ -50,7 +50,7 @@ public class MembresiasController {
 	}
 	
 	@PutMapping(path="{memId}")
-	public Membresias updateMembresia(@PathVariable ("memId") Long id,
+	public Membresias updateMembresia(@PathVariable ("memId") Integer id,
 			@RequestParam(required=false) String nombre,
 			@RequestParam(required=false) Double precio,
 			@RequestParam(required=false) String categoria,

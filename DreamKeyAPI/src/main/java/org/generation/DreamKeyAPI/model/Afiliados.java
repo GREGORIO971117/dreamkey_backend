@@ -14,7 +14,7 @@ public class Afiliados {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="idAfiliados", unique = true, nullable=false)
-	private Long id;
+	private Integer id;
 	
 	@Column(name="nombreAfiliados", nullable=false)
 	private String nombre;
@@ -161,7 +161,7 @@ public class Afiliados {
 		this.img3 = img3;
 	}//setImg3
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}//getId
 

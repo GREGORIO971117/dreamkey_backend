@@ -32,12 +32,12 @@ public class AfiliadosController {
 	}//getProductos
 	
 	@GetMapping(path="{afiId}") // http://localhost:8080/api/dreamkey/afiliados/1
-	public Afiliados getAfiliados(@PathVariable("afiId") Long id){
+	public Afiliados getAfiliados(@PathVariable("afiId") Integer id){
 		return afiliadosService.getAfiliado(id);
 	}//getAfiliados
 	
 	@DeleteMapping(path="{afiId}") // http://localhost:8080/api/dreamkey/afiliados/1
-	public Afiliados deleteAfiliados(@PathVariable ("afiId") Long id) {
+	public Afiliados deleteAfiliados(@PathVariable ("afiId") Integer id) {
 		return afiliadosService.deleteAfiliado(id);
 	}//deleteAfiliados
 	
@@ -47,7 +47,7 @@ public class AfiliadosController {
 	}//addProducto
 	
 	@PutMapping(path="{afiId}") // http://localhost:8080/api/dreamkey/afiliados/1
-	public Afiliados updateAfiliado(@PathVariable("afiId") Long id, 
+	public Afiliados updateAfiliado(@PathVariable("afiId") Integer id, 
 			@RequestParam(required=false) String nombre, 
 			@RequestParam(required=false) String imagen,
 			@RequestParam(required=false) String descripcion, 

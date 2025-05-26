@@ -22,13 +22,13 @@ public class SuscripcionService {
         return suscripcionRepository.findAll();
     }
 
-    public Suscripcion getSuscripcion(Long id) {
+    public Suscripcion getSuscripcion(Integer id) {
         return suscripcionRepository.findById(id).orElseThrow(
                 () -> new IllegalArgumentException("La suscripción con el id [" + id + "] no existe.")
         );
     }
 
-    public Suscripcion deleteSuscripcion(Long id) {
+    public Suscripcion deleteSuscripcion(Integer id) {
         Suscripcion tmp = null;
         if (suscripcionRepository.existsById(id)) {
             tmp = suscripcionRepository.findById(id).get();
@@ -41,7 +41,7 @@ public class SuscripcionService {
         return suscripcionRepository.save(suscripcion);
     }
 
-    public Suscripcion updateSuscripcion(Long id, LocalDate fechaSuscripcion, LocalDate fechaPagoSuscripcion, Boolean suscripcionActiva) {
+    public Suscripcion updateSuscripcion(Integer id, LocalDate fechaSuscripcion, LocalDate fechaPagoSuscripcion, Boolean suscripcionActiva) {
         Suscripcion tmp = null;
         if (suscripcionRepository.existsById(id)) {
             Suscripcion suscripcion = suscripcionRepository.findById(id).get();
@@ -54,7 +54,7 @@ public class SuscripcionService {
         return tmp;
     }
 
-    public Suscripcion renovarSuscripcion(Long id) {
+    public Suscripcion renovarSuscripcion(Integer id) {
         Suscripcion tmp = getSuscripcion(id);
         if (tmp != null) {
             tmp.renovarSuscripcion();

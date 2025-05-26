@@ -13,7 +13,7 @@ public class Suscripcion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idSuscripcion", unique = true, nullable = false)
-    private Long idSuscripcion;
+    private Integer idSuscripcion;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
     @Column(name = "fechaSuscripcion", nullable = false)
@@ -52,7 +52,7 @@ public class Suscripcion {
     }
 
     // Getters y Setters
-    public Long getId() {
+    public Integer getId() {
         return idSuscripcion;
     }
 

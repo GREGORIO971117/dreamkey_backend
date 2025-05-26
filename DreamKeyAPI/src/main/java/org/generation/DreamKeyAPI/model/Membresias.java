@@ -14,7 +14,7 @@ public class Membresias {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="idMembresias", unique=true, nullable=false)
-    private Long id;
+    private Integer id;
     @Column(name="nombreMembresias",nullable=false)
     private String nombre;
     @Column(name="precioMembresia",nullable=false)
@@ -37,7 +37,7 @@ public class Membresias {
         this.descripcion = descripcion;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 

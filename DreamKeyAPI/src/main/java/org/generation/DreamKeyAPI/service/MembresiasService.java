@@ -26,7 +26,7 @@ public class MembresiasService {
         return membresiasRepository.findAll();
     }
 
-    public Membresias getMembresia(Long id) {
+    public Membresias getMembresia(Integer id) {
         return membresiasRepository.findById(id).orElseThrow(
             () -> new IllegalArgumentException(
             		"La membresía con el id ["
@@ -35,7 +35,7 @@ public class MembresiasService {
         );
     }
 
-    public Membresias deleteMembresias(Long id) {
+    public Membresias deleteMembresias(Integer id) {
         Membresias tmp = null;
         if (membresiasRepository.existsById(id)) {
             tmp = membresiasRepository.findById(id).get(); 
@@ -54,7 +54,7 @@ public class MembresiasService {
     }
 @Transactional 
     public Membresias updateMembresias(
-            Long id,
+    		Integer id,
             String nombre,
             Double precio,
             String categoria,

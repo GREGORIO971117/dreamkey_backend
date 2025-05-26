@@ -22,14 +22,14 @@ public class AfiliadosService {
 		return afiliadosRepository.findAll();
 	}//getAfiliados
 
-	public Afiliados getAfiliado(Long id) {
+	public Afiliados getAfiliado(Integer id) {
 		return afiliadosRepository.findById(id).orElseThrow(
 	()-> new IllegalArgumentException("El afiliado con el id[ " + id
 			+ " ] no existe.")
 				);
 	}//getAfiliados
 	
-	public Afiliados deleteAfiliado(Long id) {
+	public Afiliados deleteAfiliado(Integer id) {
 		Afiliados tmp = null;
 		if(afiliadosRepository.existsById(id)) {
 			tmp = afiliadosRepository.findById(id).get();
@@ -49,7 +49,7 @@ public class AfiliadosService {
 	}//addAfiliados
 
 	public Afiliados updateAfiliados(
-			Long id,
+			Integer id,
 			String nombre,
 			String img,
 			String descripcion,
