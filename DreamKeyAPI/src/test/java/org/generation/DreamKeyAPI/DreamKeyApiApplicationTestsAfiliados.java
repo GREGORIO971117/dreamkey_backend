@@ -1,5 +1,16 @@
 package org.generation.DreamKeyAPI;
 
-public class DreamKeyApiApplicationTestsAfiliados {
+//import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class DreamKeyApiApplicationTestsAfiliados {
+
+	@Test
+	void test() {
+		
+	}
 
 }
