@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping(path="/api/dreamkey/Usuarios")
+@RequestMapping(path="/api/dreamkey/usuarios")
 public class UsuariosController {
 	
 		

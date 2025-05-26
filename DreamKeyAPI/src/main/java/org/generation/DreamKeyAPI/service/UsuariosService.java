@@ -59,6 +59,8 @@ public class UsuariosService {
 				if(user.getContraseña().equals(changePassword.getPassword())) {
 					user.setContraseña(changePassword.getNpassword());
 					usuariosRepository.save(user);
+				}else {
+					user = null;
 				}//ifequals
 			}//if exists
 			return user;
