@@ -7,12 +7,16 @@ import org.generation.DreamKeyAPI.dto.ChangePassword;
 import org.generation.DreamKeyAPI.model.Usuarios;
 import org.generation.DreamKeyAPI.repository.UsuariosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
 @Service
 public class UsuariosService {
-
+		
+		@Autowired
+		private PasswordEncoder encoder;
+		
 		private final UsuariosRepository usuariosRepository;
 		
 		@Autowired
@@ -45,6 +49,7 @@ public class UsuariosService {
 		public Usuarios addUsuario(Usuarios usuario) {
 			Optional<Usuarios> user = usuariosRepository.findByCorreo(usuario.getCorreo());
 			if(user.isEmpty()) {
+				usuario.setContraseña(encoder.encode(usuario.getContraseña()));
 				usuariosRepository.save(usuario);
 			} else {
 				usuario = null;
@@ -56,8 +61,9 @@ public class UsuariosService {
 			Usuarios user = null;
 			if(usuariosRepository.existsById(id)) {
 				user = usuariosRepository.findById(id).get();
-				if(user.getContraseña().equals(changePassword.getPassword())) {
-					user.setContraseña(changePassword.getNpassword());
+				//if(user.getContraseña().equals(changePassword.getPassword())) {
+				if(encoder.matches(changePassword.getPassword(), user.getContraseña())) {
+					user.setContraseña(encoder.encode(changePassword.getNpassword()));
 					usuariosRepository.save(user);
 				}else {
 					user = null;
