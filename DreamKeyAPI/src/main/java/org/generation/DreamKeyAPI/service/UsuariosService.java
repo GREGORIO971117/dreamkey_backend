@@ -1,94 +1,71 @@
 package org.generation.DreamKeyAPI.service;
 
-import java.util.ArrayList; 
 import java.util.List;
+import java.util.Optional;
 
+import org.generation.DreamKeyAPI.dto.ChangePassword;
 import org.generation.DreamKeyAPI.model.Usuarios;
+
+import org.generation.DreamKeyAPI.repository.UsuariosRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
 @Service
 public class UsuariosService {
-	
 
-		private final List<Usuarios> lista= new ArrayList<Usuarios>();
+		private final UsuariosRepository usuariosRepository;
 		
-		
-		@Autowired 
-		public UsuariosService() {
-			lista.add(new Usuarios("luu", "5562174247", "luu@gmail.com", "Sallyske2"));
-			lista.add(new Usuarios("Ary", "5569874523", "ary@gmail.com", "Sallyske3"));
-			lista.add(new Usuarios("Danney", "5595687422", "dann@gmail.com", "Sallyske4"));
-			lista.add(new Usuarios("Lesly", "5596874512", "les@gmail.com", "Sallyske5"));
-		}
-		
+		@Autowired
+		public UsuariosService(UsuariosRepository usuariosRepository){
+			this.usuariosRepository = usuariosRepository;
+		}//constructor
 		
 		public List<Usuarios> getUsuarios() {
-			// TODO Auto-generated method stub
-			return lista;
-		}
+			return usuariosRepository.findAll();
+		}//getUsuarios
 
 		public Usuarios getUsuario(Long id) {
-			
-			Usuarios tmp = null;
-			
-			for (Usuarios usuario : lista) {
-				if (usuario.getIdUsuario()==id) {
-					tmp=usuario;
-					break;
-				}
-			}
-			
-			return tmp;
-		}
+			return usuariosRepository.findById(id).orElseThrow(
+		()-> new IllegalArgumentException("El usuario con el id[ " + id
+				+ " ] no existe.")
+					);
+		}//getUsuario
 		
 		
-		public Usuarios deleteUsuarios(Long id) {
+		public Usuarios deleteUsuario(Long id) {
 			
-			Usuarios tmp = null;
-			for (Usuarios usuario : lista) {
-				if (usuario.getIdUsuario()==id) {
-					tmp=usuario;
-					lista.remove(usuario);
-					break;
-				}
-			}
-			
-			return tmp;
-		}
+			Usuarios user = null;
+			if(usuariosRepository.existsById(id)) {
+				user = usuariosRepository.findById(id).get();
+				usuariosRepository.deleteById(id);
+			}//if exists
+			return user;
+		}//deleteUsuarios
 
-		public Usuarios addUsuarios(Usuarios usuario) {
-		
-			lista.add(usuario);
+		public Usuarios addUsuario(Usuarios usuario) {
+			Optional<Usuarios> user = usuariosRepository.findByCorreo(usuario.getCorreo());
+			if(user.isEmpty()) {
+				usuariosRepository.save(usuario);
+			} else {
+				usuario = null;
+			}
 			return usuario;
-		}
+		}//addUsuarios
 
-		public Usuarios updateUsuarios(
-				
-				Long id,
-				String nombreUsuario,
-				String telefonoUsuario, 
-				String correoUsuario,
-				String contraseñaUsuario) {
-					
-			Usuarios tmp = null;
-			
-			for (Usuarios usuario : lista) {
-				
-				if (usuario.getIdUsuario()==id) {
-					if (nombreUsuario!=null) {usuario.setNombreUsuario(nombreUsuario);}
-					if (telefonoUsuario!=null) {usuario.setTelefonoUsuario(telefonoUsuario);}
-					if (correoUsuario!=null) {usuario.setCorreoUsuario(correoUsuario);}
-					if (contraseñaUsuario!=null) {usuario.setContraseñaUsuario(contraseñaUsuario);}
-				
-					tmp=usuario;
-					break;
-					}
-				
-			}return tmp;
-			
-}
-	
+		public Usuarios updateUsuario(Long id, ChangePassword changePassword){
+			Usuarios user = null;
+			if(usuariosRepository.existsById(id)) {
+				user = usuariosRepository.findById(id).get();
+				if(user.getContraseña().equals(changePassword.getPassword())) {
+					user.setContraseña(changePassword.getNpassword());
+					usuariosRepository.save(user);
+				}else {
+					user = null;
+				}//ifequals
+			}//if exists
+			return user;
+		}//updateUsuario
 	
 }// class UsuariosService

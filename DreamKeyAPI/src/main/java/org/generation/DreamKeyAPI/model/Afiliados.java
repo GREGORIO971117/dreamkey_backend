@@ -1,20 +1,55 @@
 package org.generation.DreamKeyAPI.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="afiliados")
 public class Afiliados {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="idAfiliados", unique = true, nullable=false)
 	private Long id;
+	
+	@Column(name="nombreAfiliados", nullable=false)
 	private String nombre;
+	
+	@Column(name="imgAfiliados", nullable=false)
 	private String imagen;
+	
+	@Column(name="descripcionAfiliados", nullable=false)
 	private String descripcion;
+	
+	@Column(name="ratingAfiliados", nullable=false)
 	private Double raiting;
+	
+	@Column(name="detallesAfiliados", nullable=false)
 	private String detalles;
+	
+	@Column(name="serviciosAfiliados1", nullable=false)
 	private String servicio1;
+	
+	@Column(name="serviciosAfiliados2", nullable=false)
 	private String servicio2;
+	
+	@Column(name="serviciosAfiliados3", nullable=false)
 	private String servicio3;
+	
+	@Column(name="imgAfiliados1", nullable=false)
 	private String img1;
+	
+	@Column(name="imgAfiliados2", nullable=false)
 	private String img2;
+	
+	@Column(name="imgAfiliados3", nullable=false)
 	private String img3;
-	private static Long total = Long.valueOf(0);
+	
+	//private static Long total = Long.valueOf(0);
 	
 	public Afiliados(String nombre, String imagen, String descripcion, Double raiting, String detalles,
 			String servicio1, String servicio2, String servicio3, String img1, String img2, String img3) {
@@ -29,13 +64,13 @@ public class Afiliados {
 		this.img1 = img1;
 		this.img2 = img2;
 		this.img3 = img3;
-		Afiliados.total++;
-		this.id = Afiliados.total;
+		//Afiliados.total++;
+		//this.id = Afiliados.total;
 	}//afiliados
 	
 	public Afiliados() {
-		Afiliados.total++;
-		this.id = Afiliados.total;
+		//Afiliados.total++;
+		//this.id = Afiliados.total;
 	}//constructor vacío
 
 	public String getNombre() {
