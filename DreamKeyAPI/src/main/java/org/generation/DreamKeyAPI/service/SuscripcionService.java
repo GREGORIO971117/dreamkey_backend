@@ -1,89 +1,66 @@
 package org.generation.DreamKeyAPI.service;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
-import org.generation.DreamKeyAPI.model.Membresias;
 import org.generation.DreamKeyAPI.model.Suscripcion;
+import org.generation.DreamKeyAPI.repository.SuscripcionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class SuscripcionService {
 
-	private final List<Suscripcion> lista = new ArrayList<>();
+    private final SuscripcionRepository suscripcionRepository;
 
-	
-    @Autowired 
-    public SuscripcionService() {
-        lista.add(new Suscripcion());
-        lista.add(new Suscripcion());
-        lista.add(new Suscripcion());
-        lista.add(new Suscripcion());
+    @Autowired
+    public SuscripcionService(SuscripcionRepository suscripcionRepository) {
+        this.suscripcionRepository = suscripcionRepository;
     }
-
-	
 
     public List<Suscripcion> getSuscripciones() {
-        return lista;
+        return suscripcionRepository.findAll();
     }
 
-
     public Suscripcion getSuscripcion(Long id) {
-        Suscripcion tmp = null;
-        for (Suscripcion suscripcion : lista) {
-            if (suscripcion.getId().equals(id)) {
-                tmp = suscripcion;
-                break;
-            }
-        }
-        return tmp;
+        return suscripcionRepository.findById(id).orElseThrow(
+                () -> new IllegalArgumentException("La suscripción con el id [" + id + "] no existe.")
+        );
     }
 
     public Suscripcion deleteSuscripcion(Long id) {
         Suscripcion tmp = null;
-        for (Suscripcion suscripcion : lista) {
-            if (suscripcion.getId().equals(id)) {
-                tmp = suscripcion;
-                lista.remove(suscripcion);
-                break;
-            }
+        if (suscripcionRepository.existsById(id)) {
+            tmp = suscripcionRepository.findById(id).get();
+            suscripcionRepository.deleteById(id);
         }
         return tmp;
     }
 
     public Suscripcion addSuscripcion(Suscripcion suscripcion) {
-        lista.add(suscripcion);
-        return suscripcion;
+        return suscripcionRepository.save(suscripcion);
     }
 
-    public Suscripcion updateSuscripcion(
-            Long id, 
-            LocalDate fechaSuscripcion,
-            LocalDate fechaPagoSuscripcion,
-            Boolean suscripcionActiva) {
-
+    public Suscripcion updateSuscripcion(Long id, LocalDate fechaSuscripcion, LocalDate fechaPagoSuscripcion, Boolean suscripcionActiva) {
         Suscripcion tmp = null;
-        for (Suscripcion suscripcion : lista) {
-            if (suscripcion.getId().equals(id)) {
-                if (fechaSuscripcion != null) suscripcion.setFechaSuscripcion(fechaSuscripcion);
-                if (fechaPagoSuscripcion != null) suscripcion.setFechaPagoSuscripcion(fechaPagoSuscripcion);
-                if (suscripcionActiva != null) suscripcion.setSuscripcionActiva(suscripcionActiva);
-                tmp = suscripcion;
-                break;
-            }
+        if (suscripcionRepository.existsById(id)) {
+            Suscripcion suscripcion = suscripcionRepository.findById(id).get();
+            if (fechaSuscripcion != null) suscripcion.setFechaSuscripcion(fechaSuscripcion);
+            if (fechaPagoSuscripcion != null) suscripcion.setFechaPagoSuscripcion(fechaPagoSuscripcion);
+            if (suscripcionActiva != null) suscripcion.setSuscripcionActiva(suscripcionActiva);
+            suscripcionRepository.save(suscripcion);
+            tmp = suscripcion;
         }
         return tmp;
     }
-    
+
     public Suscripcion renovarSuscripcion(Long id) {
         Suscripcion tmp = getSuscripcion(id);
         if (tmp != null) {
             tmp.renovarSuscripcion();
+            suscripcionRepository.save(tmp);
         }
         return tmp;
     }
-
 }
 
