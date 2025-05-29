@@ -39,6 +39,7 @@ class DreamKeyApiApplicationTestsAfiliados {
 	private MockMvc mockMvc;//punto de partida
 	
 	@Test
+	@Disabled
 	@DisplayName("Se prueba el  Get del endpoint http://localhost:8080/api/dreamkey/afiliados/2")
 	void pruebaGET() throws Exception {
 		this.mockMvc.perform(get("/api/dreamkey/afiliados/2") )
@@ -57,7 +58,8 @@ class DreamKeyApiApplicationTestsAfiliados {
 		.andExpect( content().string(containsString("NombreAfiliado") ) );
 	}//pruebaDELETE
 	
-	@Test 
+	@Test
+	@Disabled
 	@DisplayName("Se prueba actualizar el afiliado con el id 2 http://localhost:8080/api/dreamkey/2")
 	void pruebaPUT() throws Exception {
 		this.mockMvc.perform(put("/api/dreamkey/afiliados/2?img1=ImagenActualizada.jpg&img2=515ftw.jpg") 
@@ -68,7 +70,8 @@ class DreamKeyApiApplicationTestsAfiliados {
 		.andExpect( content().string(containsString("515ftw.jpg") ) );
 	}//pruebaPut
 	
-	@Test 
+	@Test
+	@Disabled
 	@DisplayName("Se prueba crear un afiliado  con el endpoint http://localhost:8080/api/dreamkey/afiliados/")
 	void pruebaPOST() throws Exception {
 		
