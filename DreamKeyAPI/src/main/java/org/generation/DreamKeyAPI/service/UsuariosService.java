@@ -1,6 +1,6 @@
 package org.generation.DreamKeyAPI.service;
 
-import java.util.List;
+import java.util.List; 
 import java.util.Optional;
 
 import org.generation.DreamKeyAPI.dto.ChangePassword;
@@ -73,5 +73,16 @@ public class UsuariosService {
 			}//if exists
 			return user;
 		}//updateUsuario
+
+		public boolean validateUser(Usuarios usuarios) {
+			Optional<Usuarios> user = usuariosRepository.findByCorreo(usuarios.getCorreo());
+			if(user.isPresent()) {
+				Usuarios tmp = user.get();
+				if(encoder.matches(usuarios.getContraseña(), tmp.getContraseña())) {
+					return true;
+				}//matches
+			} //if isPresent
+			return false;
+		}//validateUser
 	
 }// class UsuariosService
