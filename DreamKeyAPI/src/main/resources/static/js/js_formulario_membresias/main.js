@@ -1,5 +1,5 @@
 //Importamos el js para guardar los datos de la memebresia en el localstorage
-import { guardarMembresia } from "../js_localStorage_membre/guardarMembresias.js";
+//import { guardarMembresia } from "../js_localStorage_membre/guardarMembresias.js";
 
 //Variable de acceso al elemento del nombre
 const txtName = document.getElementById("nom");
@@ -64,38 +64,6 @@ function validarImagen() {
         return false;
     }
 }//validarImagen
-
-function obtenerNuevoId() {
-    // Obtenemos todas las claves del localStorage
-    const claves = Object.keys(localStorage);
-    let maxId = 6; // Asumimos que ya existen 6 membresías por default
-
-    claves.forEach(clave => {
-        try {
-            const obj = JSON.parse(localStorage.getItem(clave));
-            if (obj && obj.id && typeof obj.id === "number") {
-                if (obj.id > maxId) {
-                    maxId = obj.id; //Aplicamos la logica de saber el numero mayor
-                }
-            }
-        } catch (e) {
-
-        }
-    });
-
-    return maxId + 1;
-}
-
-function mostrarError(mensajeError) {
-    cuadroDeAlerta.insertAdjacentHTML("beforeend",
-        `
-        <div class="alert alert-danger" role="alert">
-        ${mensajeError}
-        </div>
-        `
-    );
-}
-
 
 btnEnviar.addEventListener("click", function (event) {
     event.preventDefault();
@@ -169,8 +137,7 @@ btnEnviar.addEventListener("click", function (event) {
     } else {
         imageUrlInput.style.borderColor = "";
     }
-
-    if (isValid) {
+	
 
         //Aqui declaro las variables nuevamente con los valores agregados al formulario para poder usarlos dentro del then del fetch
         let img = imageUrlInput.files[0];
@@ -181,7 +148,7 @@ btnEnviar.addEventListener("click", function (event) {
         let tipoMembresia = categoria.value;
         let descripcionVal = descripcion.value;
 
-        let id = obtenerNuevoId();//Llamamos a la funcion para incrementar el id
+        //let id = obtenerNuevoId();//Llamamos a la funcion para incrementar el id
 
         // Se Configuran los parámetros de Cloudinary
         // Aqui estoy usando la url API y "upload_preset" pero podemos crear una cuenta general para la pagina
@@ -190,60 +157,61 @@ btnEnviar.addEventListener("click", function (event) {
         formData.append('upload_preset', 'uw_test');  
 
         // Hacer la solicitud POST a Cloudinary
-        fetch('https://api.cloudinary.com/v1_1/dj2n2palt/image/upload', {
-            method: 'POST',
-            body: formData
-        })
-            .then(response => response.json())
-            .then(data => {
-                if (data.secure_url) {
-                    //console.log('Imagen subida correctamente:', data.secure_url); Confirmamos que se sube la imagen a cloudinary
+		fetch('https://api.cloudinary.com/v1_1/dj2n2palt/image/upload', {
+		    method: 'POST',
+		    body: formData
+		})
+		.then(response => response.json())
+		.then(data => {
+		    const urlImagen = data.secure_url;
 
-                    //Creamos el JSON con la informacion del formulario
-                    let elemento = {
-                        "id": id,
-                        "name": nombre,
-                        "price1": precioPublicoVal,
-                        "description": descripcionVal,
-                        "tipoMembresia": tipoMembresia,
-                        "Imagen": img_name,
-                        "img": data.secure_url,
-                    };
+		    if (!urlImagen) {
+		        throw new Error("No se pudo obtener la URL de la imagen.");
+		    }
 
-                    //Guardamos en el localStorage
-                    guardarMembresia(nombre, elemento);
-                    //console.log(categoria.value);
+		    return fetch('/api/dreamkey/membresias', {
+		        method: 'POST',
+		        headers: {
+		            'Content-Type': 'application/json'
+		        },
+				body: JSON.stringify({
+				    nombre: nombre,
+				    precio: precioPublicoVal,
+				    descripcion: descripcionVal,
+				    categoria: tipoMembresia,
+				    imagen: urlImagen
+		        })
+		    });
+		})
+		.then(async res => {
+		    if (!res.ok) {
+		        const errorData = await res.json();
+                console.error("Error del servidor:", errorData);
+                throw new Error(errorData.message || "Error al guardar la membresía en la base de datos");
+		    }
+		    return res.json();
+		})
+		.then(data => {
+		    console.log("Guardado correctamente:", data);
 
-                    //Aqui le hago push al arreglo, pero aqui en vez de un arreglo podemos usar la funcion "addItem" como hicimos para crear las cards
-                    //Talque seria "addItem(elemento)"";
-                    //datos.push(elemento);
+		    // Limpiar campos solo si todo salió bien
+		    txtName.value = "";
+		    precioPublico.value = "";
+		    descripcion.value = "";
+		    categoria.value = "";
+		    imageUrlInput.value = "";
 
-
-                    //console.log(datos); Imprimimos los datos en la consola, debug
-
-                } else {
-                    console.log('Error en la carga de la imagen');
-                }
-            })
-            .catch(error => {
-                console.error('Error al subir la imagen:', error);
-            });
-
-        //Con las siguientes dos lineas limpiamos los valores de los datos
-        txtName.value = "";
-        precioPublico.value = "";
-        descripcion.value = "";
-        categoria.value = "";
-        imageUrlInput.value = "";
-
-        Swal.fire({
-            title: "Membresía Agregada!",
-            //text: "You clicked the button!",
-            icon: "success"
-        });
-
-    } else {
-        mostrarError(mensajeError);
-    }
-
-});
+		    Swal.fire({
+		        title: "¡Membresía Agregada!",
+		        icon: "success"
+		    });
+		})
+		.catch(error => {
+		    console.error("Error:", error);
+		    Swal.fire({
+		        title: "Error",
+		        text: error.message,
+		        icon: "error"
+		    });
+		});
+	});

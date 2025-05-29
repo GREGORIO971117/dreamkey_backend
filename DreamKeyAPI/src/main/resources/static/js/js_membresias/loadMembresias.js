@@ -1,4 +1,4 @@
-import { addItem } from "./main.js";  
+/*import { addItem } from "./main.js";  
 
 window.addEventListener("load", function(event) {
 
@@ -18,4 +18,4 @@ window.addEventListener("load", function(event) {
             console.error("Error al leer el item", key, e);
         }
     }
-});
+});*/
