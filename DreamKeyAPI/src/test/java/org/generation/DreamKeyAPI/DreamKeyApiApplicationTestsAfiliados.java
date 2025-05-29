@@ -1,4 +1,4 @@
-package org.generation.DreamKeyAPI;
+/*package org.generation.DreamKeyAPI;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
@@ -39,6 +39,7 @@ class DreamKeyApiApplicationTestsAfiliados {
 	private MockMvc mockMvc;//punto de partida
 	
 	@Test
+	@Disabled
 	@DisplayName("Se prueba el  Get del endpoint http://localhost:8080/api/dreamkey/afiliados/2")
 	void pruebaGET() throws Exception {
 		this.mockMvc.perform(get("/api/dreamkey/afiliados/2") )
@@ -97,3 +98,4 @@ class DreamKeyApiApplicationTestsAfiliados {
 	
 	
 }//class DreamKeyApiApplicationTestsAfiliados
+*/

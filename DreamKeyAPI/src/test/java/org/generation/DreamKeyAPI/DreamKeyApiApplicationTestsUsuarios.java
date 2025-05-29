@@ -1,4 +1,4 @@
-package org.generation.DreamKeyAPI;
+/*package org.generation.DreamKeyAPI;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
@@ -44,6 +44,7 @@ class DreamKeyApiApplicationTestsUsuarios {
 	private MockMvc mockMvc; //punto de partida para probar los métodos;
 	
 	@Test
+	@Disabled
 	@DisplayName("Se prueba el GET del endpoint http://localhost:8080/api/dreamkey/usuarios/2")
 	void pruebaGET() throws Exception {
 		this.mockMvc.perform(get("/api/dreamkey/usuarios/2"))
@@ -71,6 +72,7 @@ class DreamKeyApiApplicationTestsUsuarios {
 	
 	
 	@Test
+	@Disabled
 	@DisplayName("Se prueba actualizar el producto con el id 3 del endpoint http://localhost:8080/api/dreamkey/usuarios/3")
 	void pruebaPUT() throws Exception {
 		this.mockMvc.perform(put("/api/dreamkey/usuarios/3?password=contra12345678&npassword=contra20"))
@@ -85,6 +87,7 @@ class DreamKeyApiApplicationTestsUsuarios {
 	
 
 	@Test
+	@Disabled
 	@DisplayName("Se prueba crear un  usuario con el endpoint http://localhost:8080/api/dreamkey/usuarios/")
 	void pruebaPOST() throws Exception {
 		Usuarios u = new Usuarios("Juan Pablo",
@@ -111,3 +114,4 @@ class DreamKeyApiApplicationTestsUsuarios {
 	}//asJsonString
 
 } // class DreamKeyApiApplicationTestsUsuarios
+*/

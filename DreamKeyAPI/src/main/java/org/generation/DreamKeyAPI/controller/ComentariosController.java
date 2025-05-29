@@ -27,8 +27,6 @@ public class ComentariosController {
 		super();
 		this.comentariosServices = comentarioServices;
 	}
-	
-	
 
 	@GetMapping
 	public List<Comentarios> getComentarios(){

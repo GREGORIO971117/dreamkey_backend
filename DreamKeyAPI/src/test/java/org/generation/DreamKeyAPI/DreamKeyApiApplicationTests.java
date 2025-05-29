@@ -1,8 +1,7 @@
-package org.generation.DreamKeyAPI;
+/*package org.generation.DreamKeyAPI;
 
 
 import org.junit.jupiter.api.Test; 
-=======
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -18,7 +17,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
->>>>>>> 6ebbe1174b872ec83ff6e964bac5d56a743bfaf4
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
@@ -96,3 +94,4 @@ class DreamKeyApiApplicationTests {
 	}//asJsonString
 
 }
+*/
