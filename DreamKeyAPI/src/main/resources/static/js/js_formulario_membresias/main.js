@@ -65,6 +65,16 @@ function validarImagen() {
     }
 }//validarImagen
 
+function mostrarError(mensajeError) {
+    cuadroDeAlerta.insertAdjacentHTML("beforeend",
+        `
+        <div class="alert alert-danger" role="alert">
+        ${mensajeError}
+        </div>
+        `
+    );
+}
+
 btnEnviar.addEventListener("click", function (event) {
     event.preventDefault();
 
@@ -138,7 +148,7 @@ btnEnviar.addEventListener("click", function (event) {
         imageUrlInput.style.borderColor = "";
     }
 	
-
+	if (isValid){
         //Aqui declaro las variables nuevamente con los valores agregados al formulario para poder usarlos dentro del then del fetch
         let img = imageUrlInput.files[0];
         let img_name = imageUrlInput.files[0].name;
@@ -206,12 +216,7 @@ btnEnviar.addEventListener("click", function (event) {
 		        icon: "success"
 		    });
 		})
-		.catch(error => {
-		    console.error("Error:", error);
-		    Swal.fire({
-		        title: "Error",
-		        text: error.message,
-		        icon: "error"
-		    });
-		});
+		}else{
+			mostrarError(mensajeError);
+		}
 	});
