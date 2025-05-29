@@ -1,4 +1,4 @@
-import { items } from './afiliados-data.js'
+//import { items } from './afiliados-data.js'
 // Leer el ID de la URL
 const params = new URLSearchParams(window.location.search);
 const nombreEmpresa = params.get('name');
