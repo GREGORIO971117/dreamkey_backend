@@ -40,7 +40,7 @@ btnEnviar.addEventListener("click", function (event) {
         contraseña: passwordIngresada
     });
 
-    fetch("http://localhost:8080/api/dreamkey/login", {
+    fetch("/api/dreamkey/login", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -56,11 +56,11 @@ btnEnviar.addEventListener("click", function (event) {
     })
     .then(() => {
         // Segunda petición para obtener el nombre del usuario por correo
-        return fetch(`http://localhost:8080/api/dreamkey/usuarios?correo=${encodeURIComponent(email)}`);
+        return fetch(`/api/dreamkey/usuarios?correo=${encodeURIComponent(email)}`);
     })
 	.then(() => {
 	    // Segunda petición para obtener el nombre del usuario por correo
-	    return fetch(`http://localhost:8080/api/dreamkey/usuarios?correo=${encodeURIComponent(email)}`);
+	    return fetch(`/api/dreamkey/usuarios?correo=${encodeURIComponent(email)}`);
 	})
 	.then(response => {
 	    if (!response.ok) {
