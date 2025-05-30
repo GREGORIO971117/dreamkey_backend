@@ -202,7 +202,7 @@ btnEnviar.addEventListener("click", function (event) {
 		    return res.json();
 		})
 		.then(data => {
-		    console.log("Guardado correctamente:", data);
+		    //console.log("Guardado correctamente:", data);
 
 		    // Limpiar campos solo si todo salió bien
 		    txtName.value = "";

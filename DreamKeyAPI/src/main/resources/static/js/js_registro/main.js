@@ -212,10 +212,10 @@ btnEnviar.addEventListener("click", function (event) {
         txtEmail.value = "";
         password.value = "";
         confirPassword.value = "";
-        txtName.focus();
+        //txtName.focus();
 
         Swal.fire({
-            title: "Respuestas guardadas",
+            title: "Registro correcto.",
             //text: "You clicked the button!",
             icon: "success"
         });
