@@ -189,7 +189,7 @@ btnEnviar.addEventListener("click", function (event) {
 
         fetch("/api/dreamkey/usuarios", requestOptions)
         .then((response) => response.text())
-        .then((result) => console.log(result))
+        //.then((result) => console.log(result))
         .catch((error) => console.error(error));
 
         let usuario = {
@@ -200,8 +200,8 @@ btnEnviar.addEventListener("click", function (event) {
         }
             
         //Guardamos el objeto "usuario" en el arreglo "usuarios"
-        usuarios.push(usuario);
-        guardarUsuario('Usuarios',usuarios);
+        //usuarios.push(usuario);
+        //guardarUsuario('Usuarios',usuarios);
 
         //Imprimimos los datos en la pantalla
         //console.log(datos);

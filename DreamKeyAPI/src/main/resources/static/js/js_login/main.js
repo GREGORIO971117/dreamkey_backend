@@ -1,15 +1,8 @@
-//Variable de acceso al elemento al correo
 const txtEmail = document.getElementById("email-address");
-
 const password = document.getElementById("password");
-
-//Variable de acceso al elemento del boton enviar
 const btnEnviar = document.getElementById("btnEnviar");
-
-// Cuadro que muestra los errores en los campos de datos
 const cuadroDeAlerta = document.getElementById("error-msg");
 
-//Quitamos los espacios al inicio del email y lo hacemos todo minusculas
 txtEmail.addEventListener("blur", function (event) {
     event.preventDefault();
     txtEmail.value = txtEmail.value.trim().toLowerCase();
@@ -25,63 +18,84 @@ function mostrarError(mensajeError) {
     );
 }
 
-function validarLogin(email,passwordIngresada){
-    const usuarios = JSON.parse(localStorage.getItem("Usuarios")) || [];
-    const usuario =  usuarios.find(usuario => usuario.Email === email);
-
-    if(usuario && usuario.Password === passwordIngresada){
-        return usuario;
-    }//if
-    return null;
-}//validLogin
-
 btnEnviar.addEventListener("click", function (event) {
     event.preventDefault();
 
-    let mensajeError = "";
-
-    // Limpia el mensaje de error
     cuadroDeAlerta.innerHTML = "";
+    txtEmail.style.borderColor = "";
+    password.style.borderColor = "";
 
-    const usuario = validarLogin(txtEmail.value, password.value); //retorna el usuario o null
+    const email = txtEmail.value;
+    const passwordIngresada = password.value;
 
-    //Esto es un Bandera, al ser true permite enviar los datos
-    let isValid = true;
-
-    //Validamos login
-    if(!usuario){
-        mensajeError += `<p>Correo o contraseña incorrecta</p>`
+    if (email === "" || passwordIngresada === "") {
+        mostrarError("Por favor, completa todos los campos.");
         txtEmail.style.borderColor = "red";
         password.style.borderColor = "red";
-        isValid = false;
+        return;
     }
 
-    if (isValid) {
+    const raw = JSON.stringify({
+        correo: email,
+        contraseña: passwordIngresada
+    });
 
-        console.log(usuario);
+    fetch("http://localhost:8080/api/dreamkey/login", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: raw
+    })
+    .then(async response => {
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(errorText || "Error al iniciar sesión");
+        }
+        return response.json(); // Aquí recibes el token (que no usarás)
+    })
+    .then(() => {
+        // Segunda petición para obtener el nombre del usuario por correo
+        return fetch(`http://localhost:8080/api/dreamkey/usuarios?correo=${encodeURIComponent(email)}`);
+    })
+	.then(() => {
+	    // Segunda petición para obtener el nombre del usuario por correo
+	    return fetch(`http://localhost:8080/api/dreamkey/usuarios?correo=${encodeURIComponent(email)}`);
+	})
+	.then(response => {
+	    if (!response.ok) {
+	        throw new Error("No se pudo obtener el nombre del usuario");
+	    }
+	    return response.json(); // Aquí puede venir un array
+	})
+	.then(usuarios => {
+		const usuario = Array.isArray(usuarios)
+		        ? usuarios.find(u => u.correo.toLowerCase() === email.toLowerCase())
+		        : usuarios;
 
-        Swal.fire({
-                title: "Bienvenido",
-                icon: "success",
-                timer: 2000,
-                showConfirmButton: false
-        });
+		 const nombreUsuario = usuario?.nombre || "Usuario";
 
-        //console.log("Bienvenido: " + usuario.Email + " con contrasenia: " + passwordIngresada);
-        localStorage.setItem("isLoggedIn", "true");
-        localStorage.setItem("currentUser", JSON.stringify(usuario));
-        // Limpiamos
-        txtEmail.value="";
-        password.value = ""; 
+	    Swal.fire({
+	        title: `¡Bienvenido, ${nombreUsuario}!`,
+	        icon: "success",
+	        timer: 2000,
+	        showConfirmButton: false
+	    });
 
-        //se redirecciona a la página home, una vez iniciada la sesión 
-        setTimeout(function () {
-            window.location.href = 'index.html';
-        }, 2000);
+	    localStorage.setItem("isLoggedIn", "true");
+	    localStorage.setItem("userName", nombreUsuario);
 
-    } else {
-        mostrarError(mensajeError);
-    }
+	    txtEmail.value = "";
+	    password.value = "";
 
-});//btnEnviar
-
+	    setTimeout(() => {
+	        window.location.href = 'index.html';
+	    }, 2000);
+	})
+    .catch(error => {
+        //console.error("Error durante el proceso de login:", error.message);
+        mostrarError("Correo o contraseña incorrecta.");
+        txtEmail.style.borderColor = "red";
+        password.style.borderColor = "red";
+    });
+});
