@@ -25,6 +25,7 @@ function mostrarError(mensajeError) {
     );
 }
 
+/*
 function validarLogin(email,passwordIngresada){
     const usuarios = JSON.parse(localStorage.getItem("Usuarios")) || [];
     const usuario =  usuarios.find(usuario => usuario.Email === email);
@@ -34,6 +35,37 @@ function validarLogin(email,passwordIngresada){
     }//if
     return null;
 }//validLogin
+*/
+
+async function validarLogin(correo, contraseña) {
+    try {
+        const response = await fetch("http://localhost:8080/api/dreamkey/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                correo: correo,
+                contraseña: contraseña
+            })
+        });
+
+        if (response.ok) {
+            const data = await response.json(); // Esto será el token JWT
+            localStorage.setItem("token", data.token);
+            return true;
+        } else {
+            const errorMsg = await response.text();
+            alert("Login fallido: " + errorMsg);
+            return false;
+        }
+    } catch (error) {
+        console.error("Error al hacer login:", error);
+        return false;
+    }
+}
+
+
 
 btnEnviar.addEventListener("click", function (event) {
     event.preventDefault();
