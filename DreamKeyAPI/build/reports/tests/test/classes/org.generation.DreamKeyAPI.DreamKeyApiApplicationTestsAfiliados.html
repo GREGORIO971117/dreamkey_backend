@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.004s</div>
+<div class="counter">0.001s</div>
 <p>duration</p>
 </div>
 </td>
@@ -667,19 +667,19 @@ Caused by: java.lang.RuntimeException: Driver org.postgresql.Driver claims to no
 <tr>
 <td class="failures">Se prueba el borrar el afiliado con el id 3 http://localhost:8080/api//dreamkey/afiliados/3</td>
 <td class="failures">pruebaDELETE()</td>
-<td class="failures">0.001s</td>
+<td class="failures">0s</td>
 <td class="failures">failed</td>
 </tr>
 <tr>
 <td class="failures">Se prueba el  Get del endpoint http://localhost:8080/api/dreamkey/afiliados/2</td>
 <td class="failures">pruebaGET()</td>
-<td class="failures">0.001s</td>
+<td class="failures">0s</td>
 <td class="failures">failed</td>
 </tr>
 <tr>
 <td class="failures">Se prueba crear un afiliado  con el endpoint http://localhost:8080/api/dreamkey/afiliados/</td>
 <td class="failures">pruebaPOST()</td>
-<td class="failures">0.001s</td>
+<td class="failures">0s</td>
 <td class="failures">failed</td>
 </tr>
 <tr>
@@ -693,12 +693,12 @@ Caused by: java.lang.RuntimeException: Driver org.postgresql.Driver claims to no
 <div class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>2025-06-05 18:03:25.220  INFO 29472 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [org.generation.DreamKeyAPI.DreamKeyApiApplicationTestsAfiliados], using SpringBootContextLoader
-2025-06-05 18:03:25.221  INFO 29472 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [org.generation.DreamKeyAPI.DreamKeyApiApplicationTestsAfiliados]: no resource found for suffixes {-context.xml, Context.groovy}.
-2025-06-05 18:03:25.222  INFO 29472 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.generation.DreamKeyAPI.DreamKeyApiApplicationTestsAfiliados]: DreamKeyApiApplicationTestsAfiliados does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2025-06-05 18:03:25.230  INFO 29472 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration org.generation.DreamKeyAPI.DreamKeyApiApplication for test class org.generation.DreamKeyAPI.DreamKeyApiApplicationTestsAfiliados
-2025-06-05 18:03:25.232  INFO 29472 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
-2025-06-05 18:03:25.232  INFO 29472 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@3b3f62d7, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@5b3ee43e, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@53da2aec, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@18a38bba, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@58ca6ba3, org.springframework.test.context.support.DirtiesContextTestExecutionListener@74797b90, org.springframework.test.context.transaction.TransactionalTestExecutionListener@7676b2b9, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@720c0996, org.springframework.test.context.event.EventPublishingTestExecutionListener@7910e307, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@460aa24e, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@5aa334c, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@17f8cad6, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@698e1bf5, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@7a85dc58, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@2ee1b017]
+<pre>2025-06-05 22:19:49.535  INFO 2280 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [org.generation.DreamKeyAPI.DreamKeyApiApplicationTestsAfiliados], using SpringBootContextLoader
+2025-06-05 22:19:49.536  INFO 2280 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [org.generation.DreamKeyAPI.DreamKeyApiApplicationTestsAfiliados]: no resource found for suffixes {-context.xml, Context.groovy}.
+2025-06-05 22:19:49.536  INFO 2280 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.generation.DreamKeyAPI.DreamKeyApiApplicationTestsAfiliados]: DreamKeyApiApplicationTestsAfiliados does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-06-05 22:19:49.540  INFO 2280 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration org.generation.DreamKeyAPI.DreamKeyApiApplication for test class org.generation.DreamKeyAPI.DreamKeyApiApplicationTestsAfiliados
+2025-06-05 22:19:49.541  INFO 2280 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2025-06-05 22:19:49.541  INFO 2280 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@167bb934, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@3b3f62d7, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@5b3ee43e, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@53da2aec, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@18a38bba, org.springframework.test.context.support.DirtiesContextTestExecutionListener@58ca6ba3, org.springframework.test.context.transaction.TransactionalTestExecutionListener@74797b90, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@7676b2b9, org.springframework.test.context.event.EventPublishingTestExecutionListener@720c0996, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@7910e307, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@460aa24e, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@5aa334c, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@17f8cad6, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@698e1bf5, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@7a85dc58]
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -708,14 +708,14 @@ Caused by: java.lang.RuntimeException: Driver org.postgresql.Driver claims to no
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::               (v2.7.15)
 
-2025-06-05 18:03:25.264  INFO 29472 --- [    Test worker] g.D.DreamKeyApiApplicationTestsAfiliados : Starting DreamKeyApiApplicationTestsAfiliados using Java 21.0.6 on DESKTOP-Q4TIDMO with PID 29472 (started by fredw in C:\Users\fredw\Desktop\ProyectoCH53\dreamkey_backend\DreamKeyAPI)
-2025-06-05 18:03:25.264  INFO 29472 --- [    Test worker] g.D.DreamKeyApiApplicationTestsAfiliados : No active profile set, falling back to 1 default profile: &quot;default&quot;
-2025-06-05 18:03:25.420  INFO 29472 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-06-05 18:03:25.433  INFO 29472 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 13 ms. Found 4 JPA repository interfaces.
-2025-06-05 18:03:25.580  INFO 29472 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-06-05 18:03:25.588  INFO 29472 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Starting...
-2025-06-05 18:03:25.589  WARN 29472 --- [    Test worker] org.postgresql.util.PGPropertyUtil       : JDBC URL invalid port number: ${PROD_DB_PORT}
-2025-06-05 18:03:25.594  WARN 29472 --- [    Test worker] o.h.e.j.e.i.JdbcEnvironmentInitiator     : HHH000342: Could not obtain connection to query metadata
+2025-06-05 22:19:49.567  INFO 2280 --- [    Test worker] g.D.DreamKeyApiApplicationTestsAfiliados : Starting DreamKeyApiApplicationTestsAfiliados using Java 21.0.6 on DESKTOP-Q4TIDMO with PID 2280 (started by fredw in C:\Users\fredw\Desktop\ProyectoCH53\dreamkey_backend\DreamKeyAPI)
+2025-06-05 22:19:49.567  INFO 2280 --- [    Test worker] g.D.DreamKeyApiApplicationTestsAfiliados : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2025-06-05 22:19:49.714  INFO 2280 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-06-05 22:19:49.733  INFO 2280 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 18 ms. Found 4 JPA repository interfaces.
+2025-06-05 22:19:49.846  INFO 2280 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-06-05 22:19:49.853  INFO 2280 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Starting...
+2025-06-05 22:19:49.854  WARN 2280 --- [    Test worker] org.postgresql.util.PGPropertyUtil       : JDBC URL invalid port number: ${PROD_DB_PORT}
+2025-06-05 22:19:49.858  WARN 2280 --- [    Test worker] o.h.e.j.e.i.JdbcEnvironmentInitiator     : HHH000342: Could not obtain connection to query metadata
 
 java.lang.RuntimeException: Driver org.postgresql.Driver claims to not accept jdbcUrl, jdbc:postgresql://${PROD_DB_HOST}:${PROD_DB_PORT}/${PROD_DB_NAME}
 	at com.zaxxer.hikari.util.DriverDataSource.&lt;init&gt;(DriverDataSource.java:110) ~[HikariCP-4.0.3.jar:na]
@@ -846,15 +846,15 @@ java.lang.RuntimeException: Driver org.postgresql.Driver claims to not accept jd
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69) ~[gradle-worker.jar:na]
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74) ~[gradle-worker.jar:na]
 
-2025-06-05 18:03:25.595  INFO 29472 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
-2025-06-05 18:03:25.646  INFO 29472 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Starting...
-2025-06-05 18:03:25.646  WARN 29472 --- [    Test worker] org.postgresql.util.PGPropertyUtil       : JDBC URL invalid port number: ${PROD_DB_PORT}
-2025-06-05 18:03:25.646 ERROR 29472 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is java.lang.RuntimeException: Driver org.postgresql.Driver claims to not accept jdbcUrl, jdbc:postgresql://${PROD_DB_HOST}:${PROD_DB_PORT}/${PROD_DB_NAME}
-2025-06-05 18:03:25.647  WARN 29472 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is java.lang.RuntimeException: Driver org.postgresql.Driver claims to not accept jdbcUrl, jdbc:postgresql://${PROD_DB_HOST}:${PROD_DB_PORT}/${PROD_DB_NAME}
-2025-06-05 18:03:25.652  INFO 29472 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
+2025-06-05 22:19:49.859  INFO 2280 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2025-06-05 22:19:49.905  INFO 2280 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Starting...
+2025-06-05 22:19:49.906  WARN 2280 --- [    Test worker] org.postgresql.util.PGPropertyUtil       : JDBC URL invalid port number: ${PROD_DB_PORT}
+2025-06-05 22:19:49.906 ERROR 2280 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is java.lang.RuntimeException: Driver org.postgresql.Driver claims to not accept jdbcUrl, jdbc:postgresql://${PROD_DB_HOST}:${PROD_DB_PORT}/${PROD_DB_NAME}
+2025-06-05 22:19:49.906  WARN 2280 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is java.lang.RuntimeException: Driver org.postgresql.Driver claims to not accept jdbcUrl, jdbc:postgresql://${PROD_DB_HOST}:${PROD_DB_PORT}/${PROD_DB_NAME}
+2025-06-05 22:19:49.910  INFO 2280 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
 
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2025-06-05 18:03:25.658 ERROR 29472 --- [    Test worker] o.s.boot.SpringApplication               : Application run failed
+2025-06-05 22:19:49.917 ERROR 2280 --- [    Test worker] o.s.boot.SpringApplication               : Application run failed
 
 org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is java.lang.RuntimeException: Driver org.postgresql.Driver claims to not accept jdbcUrl, jdbc:postgresql://${PROD_DB_HOST}:${PROD_DB_PORT}/${PROD_DB_NAME}
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1804) ~[spring-beans-5.3.29.jar:5.3.29]
@@ -992,7 +992,7 @@ Caused by: java.lang.RuntimeException: Driver org.postgresql.Driver claims to no
 	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-5.3.29.jar:5.3.29]
 	... 103 common frames omitted
 
-2025-06-05 18:03:25.665 ERROR 29472 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@3b3f62d7] to prepare test instance [org.generation.DreamKeyAPI.DreamKeyApiApplicationTestsAfiliados@44e7c06b]
+2025-06-05 22:19:49.922 ERROR 2280 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@167bb934] to prepare test instance [org.generation.DreamKeyAPI.DreamKeyApiApplicationTestsAfiliados@3407ded1]
 
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:98) ~[spring-test-5.3.29.jar:5.3.29]
@@ -1142,14 +1142,14 @@ Caused by: java.lang.RuntimeException: Driver org.postgresql.Driver claims to no
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::               (v2.7.15)
 
-2025-06-05 18:03:25.693  INFO 29472 --- [    Test worker] g.D.DreamKeyApiApplicationTestsAfiliados : Starting DreamKeyApiApplicationTestsAfiliados using Java 21.0.6 on DESKTOP-Q4TIDMO with PID 29472 (started by fredw in C:\Users\fredw\Desktop\ProyectoCH53\dreamkey_backend\DreamKeyAPI)
-2025-06-05 18:03:25.693  INFO 29472 --- [    Test worker] g.D.DreamKeyApiApplicationTestsAfiliados : No active profile set, falling back to 1 default profile: &quot;default&quot;
-2025-06-05 18:03:25.851  INFO 29472 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-06-05 18:03:25.867  INFO 29472 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15 ms. Found 4 JPA repository interfaces.
-2025-06-05 18:03:26.006  INFO 29472 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-06-05 18:03:26.012  INFO 29472 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Starting...
-2025-06-05 18:03:26.013  WARN 29472 --- [    Test worker] org.postgresql.util.PGPropertyUtil       : JDBC URL invalid port number: ${PROD_DB_PORT}
-2025-06-05 18:03:26.017  WARN 29472 --- [    Test worker] o.h.e.j.e.i.JdbcEnvironmentInitiator     : HHH000342: Could not obtain connection to query metadata
+2025-06-05 22:19:49.948  INFO 2280 --- [    Test worker] g.D.DreamKeyApiApplicationTestsAfiliados : Starting DreamKeyApiApplicationTestsAfiliados using Java 21.0.6 on DESKTOP-Q4TIDMO with PID 2280 (started by fredw in C:\Users\fredw\Desktop\ProyectoCH53\dreamkey_backend\DreamKeyAPI)
+2025-06-05 22:19:49.948  INFO 2280 --- [    Test worker] g.D.DreamKeyApiApplicationTestsAfiliados : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2025-06-05 22:19:50.079  INFO 2280 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-06-05 22:19:50.093  INFO 2280 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 13 ms. Found 4 JPA repository interfaces.
+2025-06-05 22:19:50.214  INFO 2280 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-06-05 22:19:50.222  INFO 2280 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Starting...
+2025-06-05 22:19:50.223  WARN 2280 --- [    Test worker] org.postgresql.util.PGPropertyUtil       : JDBC URL invalid port number: ${PROD_DB_PORT}
+2025-06-05 22:19:50.227  WARN 2280 --- [    Test worker] o.h.e.j.e.i.JdbcEnvironmentInitiator     : HHH000342: Could not obtain connection to query metadata
 
 java.lang.RuntimeException: Driver org.postgresql.Driver claims to not accept jdbcUrl, jdbc:postgresql://${PROD_DB_HOST}:${PROD_DB_PORT}/${PROD_DB_NAME}
 	at com.zaxxer.hikari.util.DriverDataSource.&lt;init&gt;(DriverDataSource.java:110) ~[HikariCP-4.0.3.jar:na]
@@ -1280,15 +1280,15 @@ java.lang.RuntimeException: Driver org.postgresql.Driver claims to not accept jd
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69) ~[gradle-worker.jar:na]
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74) ~[gradle-worker.jar:na]
 
-2025-06-05 18:03:26.018  INFO 29472 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
-2025-06-05 18:03:26.062  INFO 29472 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Starting...
-2025-06-05 18:03:26.063  WARN 29472 --- [    Test worker] org.postgresql.util.PGPropertyUtil       : JDBC URL invalid port number: ${PROD_DB_PORT}
-2025-06-05 18:03:26.063 ERROR 29472 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is java.lang.RuntimeException: Driver org.postgresql.Driver claims to not accept jdbcUrl, jdbc:postgresql://${PROD_DB_HOST}:${PROD_DB_PORT}/${PROD_DB_NAME}
-2025-06-05 18:03:26.063  WARN 29472 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is java.lang.RuntimeException: Driver org.postgresql.Driver claims to not accept jdbcUrl, jdbc:postgresql://${PROD_DB_HOST}:${PROD_DB_PORT}/${PROD_DB_NAME}
-2025-06-05 18:03:26.064  INFO 29472 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
+2025-06-05 22:19:50.228  INFO 2280 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2025-06-05 22:19:50.266  INFO 2280 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Starting...
+2025-06-05 22:19:50.266  WARN 2280 --- [    Test worker] org.postgresql.util.PGPropertyUtil       : JDBC URL invalid port number: ${PROD_DB_PORT}
+2025-06-05 22:19:50.267 ERROR 2280 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is java.lang.RuntimeException: Driver org.postgresql.Driver claims to not accept jdbcUrl, jdbc:postgresql://${PROD_DB_HOST}:${PROD_DB_PORT}/${PROD_DB_NAME}
+2025-06-05 22:19:50.267  WARN 2280 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is java.lang.RuntimeException: Driver org.postgresql.Driver claims to not accept jdbcUrl, jdbc:postgresql://${PROD_DB_HOST}:${PROD_DB_PORT}/${PROD_DB_NAME}
+2025-06-05 22:19:50.268  INFO 2280 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
 
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2025-06-05 18:03:26.071 ERROR 29472 --- [    Test worker] o.s.boot.SpringApplication               : Application run failed
+2025-06-05 22:19:50.273 ERROR 2280 --- [    Test worker] o.s.boot.SpringApplication               : Application run failed
 
 org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is java.lang.RuntimeException: Driver org.postgresql.Driver claims to not accept jdbcUrl, jdbc:postgresql://${PROD_DB_HOST}:${PROD_DB_PORT}/${PROD_DB_NAME}
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1804) ~[spring-beans-5.3.29.jar:5.3.29]
@@ -1426,7 +1426,7 @@ Caused by: java.lang.RuntimeException: Driver org.postgresql.Driver claims to no
 	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-5.3.29.jar:5.3.29]
 	... 103 common frames omitted
 
-2025-06-05 18:03:26.077 ERROR 29472 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@3b3f62d7] to prepare test instance [org.generation.DreamKeyAPI.DreamKeyApiApplicationTestsAfiliados@5cea47a1]
+2025-06-05 22:19:50.278 ERROR 2280 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@167bb934] to prepare test instance [org.generation.DreamKeyAPI.DreamKeyApiApplicationTestsAfiliados@64c37088]
 
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:98) ~[spring-test-5.3.29.jar:5.3.29]
@@ -1576,14 +1576,14 @@ Caused by: java.lang.RuntimeException: Driver org.postgresql.Driver claims to no
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::               (v2.7.15)
 
-2025-06-05 18:03:26.106  INFO 29472 --- [    Test worker] g.D.DreamKeyApiApplicationTestsAfiliados : Starting DreamKeyApiApplicationTestsAfiliados using Java 21.0.6 on DESKTOP-Q4TIDMO with PID 29472 (started by fredw in C:\Users\fredw\Desktop\ProyectoCH53\dreamkey_backend\DreamKeyAPI)
-2025-06-05 18:03:26.106  INFO 29472 --- [    Test worker] g.D.DreamKeyApiApplicationTestsAfiliados : No active profile set, falling back to 1 default profile: &quot;default&quot;
-2025-06-05 18:03:26.251  INFO 29472 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-06-05 18:03:26.269  INFO 29472 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 16 ms. Found 4 JPA repository interfaces.
-2025-06-05 18:03:26.390  INFO 29472 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-06-05 18:03:26.397  INFO 29472 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Starting...
-2025-06-05 18:03:26.398  WARN 29472 --- [    Test worker] org.postgresql.util.PGPropertyUtil       : JDBC URL invalid port number: ${PROD_DB_PORT}
-2025-06-05 18:03:26.402  WARN 29472 --- [    Test worker] o.h.e.j.e.i.JdbcEnvironmentInitiator     : HHH000342: Could not obtain connection to query metadata
+2025-06-05 22:19:50.302  INFO 2280 --- [    Test worker] g.D.DreamKeyApiApplicationTestsAfiliados : Starting DreamKeyApiApplicationTestsAfiliados using Java 21.0.6 on DESKTOP-Q4TIDMO with PID 2280 (started by fredw in C:\Users\fredw\Desktop\ProyectoCH53\dreamkey_backend\DreamKeyAPI)
+2025-06-05 22:19:50.302  INFO 2280 --- [    Test worker] g.D.DreamKeyApiApplicationTestsAfiliados : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2025-06-05 22:19:50.423  INFO 2280 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-06-05 22:19:50.436  INFO 2280 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 4 JPA repository interfaces.
+2025-06-05 22:19:50.555  INFO 2280 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-06-05 22:19:50.563  INFO 2280 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Starting...
+2025-06-05 22:19:50.563  WARN 2280 --- [    Test worker] org.postgresql.util.PGPropertyUtil       : JDBC URL invalid port number: ${PROD_DB_PORT}
+2025-06-05 22:19:50.568  WARN 2280 --- [    Test worker] o.h.e.j.e.i.JdbcEnvironmentInitiator     : HHH000342: Could not obtain connection to query metadata
 
 java.lang.RuntimeException: Driver org.postgresql.Driver claims to not accept jdbcUrl, jdbc:postgresql://${PROD_DB_HOST}:${PROD_DB_PORT}/${PROD_DB_NAME}
 	at com.zaxxer.hikari.util.DriverDataSource.&lt;init&gt;(DriverDataSource.java:110) ~[HikariCP-4.0.3.jar:na]
@@ -1714,15 +1714,15 @@ java.lang.RuntimeException: Driver org.postgresql.Driver claims to not accept jd
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69) ~[gradle-worker.jar:na]
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74) ~[gradle-worker.jar:na]
 
-2025-06-05 18:03:26.403  INFO 29472 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
-2025-06-05 18:03:26.442  INFO 29472 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Starting...
-2025-06-05 18:03:26.442  WARN 29472 --- [    Test worker] org.postgresql.util.PGPropertyUtil       : JDBC URL invalid port number: ${PROD_DB_PORT}
-2025-06-05 18:03:26.443 ERROR 29472 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is java.lang.RuntimeException: Driver org.postgresql.Driver claims to not accept jdbcUrl, jdbc:postgresql://${PROD_DB_HOST}:${PROD_DB_PORT}/${PROD_DB_NAME}
-2025-06-05 18:03:26.443  WARN 29472 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is java.lang.RuntimeException: Driver org.postgresql.Driver claims to not accept jdbcUrl, jdbc:postgresql://${PROD_DB_HOST}:${PROD_DB_PORT}/${PROD_DB_NAME}
-2025-06-05 18:03:26.444  INFO 29472 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
+2025-06-05 22:19:50.569  INFO 2280 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2025-06-05 22:19:50.608  INFO 2280 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Starting...
+2025-06-05 22:19:50.608  WARN 2280 --- [    Test worker] org.postgresql.util.PGPropertyUtil       : JDBC URL invalid port number: ${PROD_DB_PORT}
+2025-06-05 22:19:50.609 ERROR 2280 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is java.lang.RuntimeException: Driver org.postgresql.Driver claims to not accept jdbcUrl, jdbc:postgresql://${PROD_DB_HOST}:${PROD_DB_PORT}/${PROD_DB_NAME}
+2025-06-05 22:19:50.609  WARN 2280 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is java.lang.RuntimeException: Driver org.postgresql.Driver claims to not accept jdbcUrl, jdbc:postgresql://${PROD_DB_HOST}:${PROD_DB_PORT}/${PROD_DB_NAME}
+2025-06-05 22:19:50.610  INFO 2280 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
 
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2025-06-05 18:03:26.450 ERROR 29472 --- [    Test worker] o.s.boot.SpringApplication               : Application run failed
+2025-06-05 22:19:50.616 ERROR 2280 --- [    Test worker] o.s.boot.SpringApplication               : Application run failed
 
 org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is java.lang.RuntimeException: Driver org.postgresql.Driver claims to not accept jdbcUrl, jdbc:postgresql://${PROD_DB_HOST}:${PROD_DB_PORT}/${PROD_DB_NAME}
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1804) ~[spring-beans-5.3.29.jar:5.3.29]
@@ -1860,7 +1860,7 @@ Caused by: java.lang.RuntimeException: Driver org.postgresql.Driver claims to no
 	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-5.3.29.jar:5.3.29]
 	... 103 common frames omitted
 
-2025-06-05 18:03:26.456 ERROR 29472 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@3b3f62d7] to prepare test instance [org.generation.DreamKeyAPI.DreamKeyApiApplicationTestsAfiliados@16e0afab]
+2025-06-05 22:19:50.623 ERROR 2280 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@167bb934] to prepare test instance [org.generation.DreamKeyAPI.DreamKeyApiApplicationTestsAfiliados@1512efe9]
 
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:98) ~[spring-test-5.3.29.jar:5.3.29]
@@ -2010,14 +2010,14 @@ Caused by: java.lang.RuntimeException: Driver org.postgresql.Driver claims to no
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::               (v2.7.15)
 
-2025-06-05 18:03:26.485  INFO 29472 --- [    Test worker] g.D.DreamKeyApiApplicationTestsAfiliados : Starting DreamKeyApiApplicationTestsAfiliados using Java 21.0.6 on DESKTOP-Q4TIDMO with PID 29472 (started by fredw in C:\Users\fredw\Desktop\ProyectoCH53\dreamkey_backend\DreamKeyAPI)
-2025-06-05 18:03:26.485  INFO 29472 --- [    Test worker] g.D.DreamKeyApiApplicationTestsAfiliados : No active profile set, falling back to 1 default profile: &quot;default&quot;
-2025-06-05 18:03:26.642  INFO 29472 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-06-05 18:03:26.658  INFO 29472 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15 ms. Found 4 JPA repository interfaces.
-2025-06-05 18:03:26.777  INFO 29472 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-06-05 18:03:26.786  INFO 29472 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Starting...
-2025-06-05 18:03:26.787  WARN 29472 --- [    Test worker] org.postgresql.util.PGPropertyUtil       : JDBC URL invalid port number: ${PROD_DB_PORT}
-2025-06-05 18:03:26.792  WARN 29472 --- [    Test worker] o.h.e.j.e.i.JdbcEnvironmentInitiator     : HHH000342: Could not obtain connection to query metadata
+2025-06-05 22:19:50.650  INFO 2280 --- [    Test worker] g.D.DreamKeyApiApplicationTestsAfiliados : Starting DreamKeyApiApplicationTestsAfiliados using Java 21.0.6 on DESKTOP-Q4TIDMO with PID 2280 (started by fredw in C:\Users\fredw\Desktop\ProyectoCH53\dreamkey_backend\DreamKeyAPI)
+2025-06-05 22:19:50.650  INFO 2280 --- [    Test worker] g.D.DreamKeyApiApplicationTestsAfiliados : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2025-06-05 22:19:50.782  INFO 2280 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-06-05 22:19:50.799  INFO 2280 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 16 ms. Found 4 JPA repository interfaces.
+2025-06-05 22:19:50.908  INFO 2280 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-06-05 22:19:50.915  INFO 2280 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Starting...
+2025-06-05 22:19:50.915  WARN 2280 --- [    Test worker] org.postgresql.util.PGPropertyUtil       : JDBC URL invalid port number: ${PROD_DB_PORT}
+2025-06-05 22:19:50.920  WARN 2280 --- [    Test worker] o.h.e.j.e.i.JdbcEnvironmentInitiator     : HHH000342: Could not obtain connection to query metadata
 
 java.lang.RuntimeException: Driver org.postgresql.Driver claims to not accept jdbcUrl, jdbc:postgresql://${PROD_DB_HOST}:${PROD_DB_PORT}/${PROD_DB_NAME}
 	at com.zaxxer.hikari.util.DriverDataSource.&lt;init&gt;(DriverDataSource.java:110) ~[HikariCP-4.0.3.jar:na]
@@ -2148,15 +2148,15 @@ java.lang.RuntimeException: Driver org.postgresql.Driver claims to not accept jd
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69) ~[gradle-worker.jar:na]
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74) ~[gradle-worker.jar:na]
 
-2025-06-05 18:03:26.793  INFO 29472 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
-2025-06-05 18:03:26.833  INFO 29472 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Starting...
-2025-06-05 18:03:26.833  WARN 29472 --- [    Test worker] org.postgresql.util.PGPropertyUtil       : JDBC URL invalid port number: ${PROD_DB_PORT}
-2025-06-05 18:03:26.833 ERROR 29472 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is java.lang.RuntimeException: Driver org.postgresql.Driver claims to not accept jdbcUrl, jdbc:postgresql://${PROD_DB_HOST}:${PROD_DB_PORT}/${PROD_DB_NAME}
-2025-06-05 18:03:26.833  WARN 29472 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is java.lang.RuntimeException: Driver org.postgresql.Driver claims to not accept jdbcUrl, jdbc:postgresql://${PROD_DB_HOST}:${PROD_DB_PORT}/${PROD_DB_NAME}
-2025-06-05 18:03:26.835  INFO 29472 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
+2025-06-05 22:19:50.920  INFO 2280 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2025-06-05 22:19:50.960  INFO 2280 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Starting...
+2025-06-05 22:19:50.961  WARN 2280 --- [    Test worker] org.postgresql.util.PGPropertyUtil       : JDBC URL invalid port number: ${PROD_DB_PORT}
+2025-06-05 22:19:50.961 ERROR 2280 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is java.lang.RuntimeException: Driver org.postgresql.Driver claims to not accept jdbcUrl, jdbc:postgresql://${PROD_DB_HOST}:${PROD_DB_PORT}/${PROD_DB_NAME}
+2025-06-05 22:19:50.961  WARN 2280 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is java.lang.RuntimeException: Driver org.postgresql.Driver claims to not accept jdbcUrl, jdbc:postgresql://${PROD_DB_HOST}:${PROD_DB_PORT}/${PROD_DB_NAME}
+2025-06-05 22:19:50.962  INFO 2280 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
 
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2025-06-05 18:03:26.841 ERROR 29472 --- [    Test worker] o.s.boot.SpringApplication               : Application run failed
+2025-06-05 22:19:50.968 ERROR 2280 --- [    Test worker] o.s.boot.SpringApplication               : Application run failed
 
 org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is java.lang.RuntimeException: Driver org.postgresql.Driver claims to not accept jdbcUrl, jdbc:postgresql://${PROD_DB_HOST}:${PROD_DB_PORT}/${PROD_DB_NAME}
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1804) ~[spring-beans-5.3.29.jar:5.3.29]
@@ -2294,7 +2294,7 @@ Caused by: java.lang.RuntimeException: Driver org.postgresql.Driver claims to no
 	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-5.3.29.jar:5.3.29]
 	... 103 common frames omitted
 
-2025-06-05 18:03:26.846 ERROR 29472 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@3b3f62d7] to prepare test instance [org.generation.DreamKeyAPI.DreamKeyApiApplicationTestsAfiliados@5625e7e1]
+2025-06-05 22:19:50.973 ERROR 2280 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@167bb934] to prepare test instance [org.generation.DreamKeyAPI.DreamKeyApiApplicationTestsAfiliados@77e261e3]
 
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:98) ~[spring-test-5.3.29.jar:5.3.29]
@@ -2446,7 +2446,7 @@ Caused by: java.lang.RuntimeException: Driver org.postgresql.Driver claims to no
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="https://www.gradle.org">Gradle 8.13</a> at 5 jun 2025 18:03:28</p>
+<a href="https://www.gradle.org">Gradle 8.13</a> at 5 jun 2025 22:19:52</p>
 </div>
 </div>
 </body>
