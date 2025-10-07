@@ -189,7 +189,7 @@ btnEnviar.addEventListener("click", function (event) {
 
         fetch("/api/dreamkey/usuarios", requestOptions)
         .then((response) => response.text())
-        .then((result) => console.log(result))
+        //.then((result) => console.log(result))
         .catch((error) => console.error(error));
 
         let usuario = {
@@ -200,8 +200,8 @@ btnEnviar.addEventListener("click", function (event) {
         }
             
         //Guardamos el objeto "usuario" en el arreglo "usuarios"
-        usuarios.push(usuario);
-        guardarUsuario('Usuarios',usuarios);
+        //usuarios.push(usuario);
+        //guardarUsuario('Usuarios',usuarios);
 
         //Imprimimos los datos en la pantalla
         //console.log(datos);
@@ -212,10 +212,10 @@ btnEnviar.addEventListener("click", function (event) {
         txtEmail.value = "";
         password.value = "";
         confirPassword.value = "";
-        txtName.focus();
+        //txtName.focus();
 
         Swal.fire({
-            title: "Respuestas guardadas",
+            title: "Registro correcto.",
             //text: "You clicked the button!",
             icon: "success"
         });

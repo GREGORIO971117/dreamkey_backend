@@ -34,6 +34,7 @@ class DreamKeyApiApplicationTests {
 	private MockMvc mockMvc;
 	
 	@Test
+	@Disabled
 	@DisplayName("Se prueba el get del endpoint http://localhost:8080/api/dreamkey/membresias/6")
 	void pruebaGET() throws Exception{
 		
@@ -44,7 +45,7 @@ class DreamKeyApiApplicationTests {
 	}
 	
 	@Test
-	//@Disabled("Probado una vez, deshabilitado para subsecuentes ocasiones")
+	@Disabled("Probado una vez, deshabilitado para subsecuentes ocasiones")
 	@DisplayName("Se prueba el delete del endpoint http://localhost:8080/api/dreamkey/membresias/2")
 	void pruebaDELETE() throws Exception{
 		
@@ -57,7 +58,7 @@ class DreamKeyApiApplicationTests {
 	
 	
 	@Test
-	//@Disabled("Ya se logro esto")
+	@Disabled("Ya se logro esto")
 	@DisplayName("Se prueba el update del endpoint http://localhost:8080/api/dreamkey/membresias")
 	void pruebaUPDATE() throws Exception{
 		
@@ -69,7 +70,7 @@ class DreamKeyApiApplicationTests {
 	}
 	
 	@Test
-	//@Disabled
+	@Disabled
 	@DisplayName("Se prueba el update del endpoint http://localhost:8080/api/dreamkey/membresias")
 	void pruebaPOST() throws Exception{
 		

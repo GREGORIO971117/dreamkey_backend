@@ -178,7 +178,7 @@ btnEnviar.addEventListener("click", function(event){
         txtEmail.value="";
         txtNumber.value="";
         txtMessage.value="";
-        txtName.focus();
+        //txtName.focus();
 
         Swal.fire({
             title: "Mensaje Enviado!",

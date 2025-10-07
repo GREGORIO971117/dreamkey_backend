@@ -25,8 +25,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
 
     if (isLoggedIn) {
-      const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-      const userName = currentUser?.Nombre || "Usuario";
+      const userName = localStorage.getItem("userName") || "Usuario";
 
       navbar.innerHTML = `
         <li class="nav-item">
@@ -40,7 +39,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       document.getElementById("logout-link").addEventListener("click", (e) => {
         e.preventDefault();
         localStorage.removeItem("isLoggedIn");
-        localStorage.removeItem("currentUser");
+        localStorage.removeItem("userName");
         location.reload();
       });
     }
